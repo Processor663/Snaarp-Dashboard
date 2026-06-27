@@ -1,0 +1,75 @@
+ 
+:root {
+  /* Brand */
+  --accent:          #4f6ef7;
+  --accent-light:    #eef0fe;
+  --accent-hover:    #3a57e8;
+ 
+  /* Background layers */
+  --bg-page:         #f4f5f7;
+  --bg-card:         #ffffff;
+  --bg-sidebar:      #ffffff;
+  --bg-topbar:       #ffffff;
+ 
+  /* Borders */
+  --border:          #e8e9ec;
+  --border-strong:   #d1d3db;
+ 
+  /* Text */
+  --text-primary:    #111827;
+  --text-secondary:  #6b7280;
+  --text-muted:      #9ca3af;
+  --text-on-accent:  #ffffff;
+ 
+  /* Status colors */
+  --green:           #10b981;
+  --green-light:     #d1fae5;
+  --red:             #ef4444;
+  --red-light:       #fee2e2;
+  --amber:           #f59e0b;
+  --amber-light:     #fef3c7;
+ 
+  /* Chart palette */
+  --chart-blue:      #4f6ef7;
+  --chart-violet:    #8b5cf6;
+  --chart-green:     #10b981;
+  --chart-amber:     #f59e0b;
+  --chart-gray:      #d1d5db;
+ 
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-dropdown: 0 4px 16px rgba(0, 0, 0, 0.10);
+ 
+ 
+  /* Typography */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+ 
+  /* Transitions */
+  --transition: 180ms ease;
+}
+ 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+ 
+
+.box {
+  user-select: none;
+  appearance: none;
+}

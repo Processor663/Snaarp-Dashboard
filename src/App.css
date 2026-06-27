@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem;
+}
+
+.wrapper > div {
+    background-color: var(--bg-sidebar);
+}
+.wrapper :nth-child(1) {
+    width: 20%;
+}
+.wrapper :nth-child(2)  {
+        width: 80%;
+}
