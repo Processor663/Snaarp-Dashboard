@@ -1,7 +1,13 @@
+import { Wrapper } from "./MainContent.styles";
 
+import TopSearch from "../../TopSearch/TopSearch";
 
 const MainContent = () => {
-  return <div>MainContent</div>;
+  return (
+    <Wrapper>
+      <TopSearch />
+    </Wrapper>
+  );
 };
 
 export default MainContent;

@@ -9,7 +9,6 @@ function App() {
     <div className="wrapper">
       <Aside />
       <MainContent />
-      
     </div>
   )
 }

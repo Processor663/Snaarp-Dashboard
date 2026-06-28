@@ -1,9 +1,12 @@
+import { Wrapper } from "./Aside.styles";
+
+
 const SideBar = () => {
   return (
-    <div>
+    <Wrapper>
       SideBar
       <div className="con"></div>
-    </div>
+    </Wrapper>
   );
 };
 
