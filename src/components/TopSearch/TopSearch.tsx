@@ -7,7 +7,7 @@ const TopSearch = () => {
   return (
     <Wrapper>
       <div className="search-container">
-        <CiSearch className="icon-search"></CiSearch>
+        <CiSearch className="icon-search" />
         <input type="text" placeholder="search for users, groups or settings" />
       </div>
       <div className="left-bar">

@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
   }
 
   .search-container .icon-search {
+    font-size: 1.2rem;
     width: fit-content !important;
     padding-left: 0.5em;
   }
@@ -40,23 +41,24 @@ export const Wrapper = styled.div`
   .left-bar {
     display: flex;
     justify-content: flex-end;
-    align-items: baseline;
+    align-items: center;
     width: 50%;
+   
   }
 
   .left-bar > div {
     margin-left: 0.3rem;
-    align-self: baseline;
   }
 
   .left-bar .first {
     background-color: var(--bg-page);
-    padding: 0.5em 0.8rem;
+    padding: 0.8em 0.8rem;
     border-radius: 5px;
   }
 
   .left-bar .second {
     display: flex;
+    align-items: center;
     background-color: var(--bg-page);
     padding: 0.5em;
     border-radius: 5px;

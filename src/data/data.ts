@@ -23,13 +23,37 @@
 //   </MainContent>
 // </AppShell>
 
-
-
-
+import type { ReactNode } from "react";
+import { MdDashboard, MdDevices, MdStorage } from "react-icons/md";
+import { HiOfficeBuilding } from "react-icons/hi";
+import { TbReport, TbReportAnalytics } from "react-icons/tb";
+import { RiBillLine } from "react-icons/ri";
+import type { IconType } from "react-icons/lib";
+import { AiOutlineUser } from "react-icons/ai";
+import { IoSettingsOutline } from "react-icons/io5";
 
 // ============================================================
 // Snaarp Dashboard — Complete Mock Data
 // ============================================================
+
+export type AsideItemProps = {
+  label: string,
+  icon: IconType
+}
+
+export const asideItems: AsideItemProps[] = [
+  { label: "Dashboard", icon: MdDashboard },
+  { label: "Organization & Reg.", icon: HiOfficeBuilding },
+  { label: "Reporting", icon: TbReport },
+  { label: "Billing", icon: RiBillLine },
+  { label: "Account", icon: AiOutlineUser },
+  { label: "Storage", icon: MdStorage },
+  { label: "Settings", icon: IoSettingsOutline },
+  { label: "Device Management", icon: MdDevices },
+  { label: "Productivity Report", icon: TbReportAnalytics },
+  // { label: "User Panel", icon: FaUsers },
+  // { label: "Support", icon: IoSupportOutline },
+];
 
 // ─── CLOUD NETWORK ──────────────────────────────────────────
 
