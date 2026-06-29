@@ -12,11 +12,16 @@ const ChakraAccordion = () => {
           </Span>
           <Span flex="1" p="0" m="0" fontWeight={"bold"}>Cloud Network</Span>
           <Accordion.ItemIndicator />
-        </Accordion.ItemTrigger>
+        </Accordion.ItemTrigger> 
         <Accordion.ItemContent>
           <Accordion.ItemBody>
             <Wrapper>
-              <div className="item-1">1</div>
+              <div className="item-1">
+                <div className="sub-item-1">1</div>
+                <div className="sub-item-2">2</div>
+                <div className="sub-item-3">3</div>
+                <div className="sub-item-4">4</div>
+              </div>
               <div className="item-2">2</div>
               <div className="item-3">3</div>
               <div className="item-4">4</div>

@@ -23,7 +23,7 @@
 //   </MainContent>
 // </AppShell>
 
-import type { ReactNode } from "react";
+
 import { MdDashboard, MdDevices, MdStorage } from "react-icons/md";
 import { HiOfficeBuilding } from "react-icons/hi";
 import { TbReport, TbReportAnalytics } from "react-icons/tb";
@@ -31,6 +31,8 @@ import { RiBillLine } from "react-icons/ri";
 import type { IconType } from "react-icons/lib";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
+import { HiOutlineChartBar } from "react-icons/hi";
+import { MdOutlineContactSupport } from "react-icons/md";
 
 // ============================================================
 // Snaarp Dashboard — Complete Mock Data
@@ -41,7 +43,7 @@ export type AsideItemProps = {
   icon: IconType
 }
 
-export const asideItems: AsideItemProps[] = [
+export const asideItemData: AsideItemProps[] = [
   { label: "Dashboard", icon: MdDashboard },
   { label: "Organization & Reg.", icon: HiOfficeBuilding },
   { label: "Reporting", icon: TbReport },
@@ -51,9 +53,14 @@ export const asideItems: AsideItemProps[] = [
   { label: "Settings", icon: IoSettingsOutline },
   { label: "Device Management", icon: MdDevices },
   { label: "Productivity Report", icon: TbReportAnalytics },
-  // { label: "User Panel", icon: FaUsers },
-  // { label: "Support", icon: IoSupportOutline },
+  
 ];
+
+export const asideBottomItems: AsideItemProps[] = [
+  { label: "User Panel", icon: HiOutlineChartBar },
+  { label: "Support", icon: MdOutlineContactSupport },
+
+]
 
 // ─── CLOUD NETWORK ──────────────────────────────────────────
 
