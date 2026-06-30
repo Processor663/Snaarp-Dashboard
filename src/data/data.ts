@@ -64,11 +64,111 @@ export const asideBottomItems: AsideItemProps[] = [
 
 // ─── CLOUD NETWORK ──────────────────────────────────────────
 
-export const cloudNetworkStats = {
-  users: { value: 3836, change: -15, trend: "down" },
-  groups: { value: 316, change: 23, trend: "up" },
-  uploads: { value: 316, change: 23, trend: "up" },
-  departments: { value: 316, change: -23, trend: "down" },
+export type ChartDataPoint = {
+  value: number;
+};
+
+export type DashboardStat = {
+  title: string,
+  total: string;
+  trend: "up" | "down";
+  percentage: string;
+  chartData: ChartDataPoint[];
+};
+
+export type DashboardStatsResponse = {
+  [key: string]: DashboardStat;
+};
+
+export const usersSparklineData: DashboardStatsResponse = {
+  users: {
+    title: "User",
+    total: "3,836",
+    trend: "down",
+    percentage: "15%",
+    chartData: [
+      { value: 90 },
+      { value: 85 },
+      { value: 82 },
+      { value: 80 },
+      { value: 83 },
+      { value: 75 },
+      { value: 60 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 30 },
+      { value: 20 },
+      { value: 15 },
+      { value: 5 },
+    ],
+  },
+  groups: {
+    title: "Groups",
+    total: "316",
+    trend: "up",
+    percentage: "23%",
+    chartData: [
+      { value: 5 },
+      { value: 15 },
+      { value: 20 },
+      { value: 30 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 60 },
+      { value: 75 },
+      { value: 83 },
+      { value: 80 },
+      { value: 82 },
+      { value: 85 },
+      { value: 90 },
+    ],
+  },
+  uploads: {
+    title: "Uploads",
+    total: "316",
+    trend: "up",
+    percentage: "23%",
+    chartData: [
+      { value: 5 },
+      { value: 15 },
+      { value: 20 },
+      { value: 30 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 60 },
+      { value: 75 },
+      { value: 83 },
+      { value: 80 },
+      { value: 82 },
+      { value: 85 },
+      { value: 90 },
+    ],
+  },
+  departments: {
+    title: "Departments",
+    total: "316",
+    trend: "down",
+    percentage: "23%",
+    chartData: [
+      { value: 90 },
+      { value: 85 },
+      { value: 82 },
+      { value: 80 },
+      { value: 83 },
+      { value: 75 },
+      { value: 60 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 30 },
+      { value: 20 },
+      { value: 15 },
+      { value: 5 },
+    ],
+  },
 };
 
 export const storageSummary = {

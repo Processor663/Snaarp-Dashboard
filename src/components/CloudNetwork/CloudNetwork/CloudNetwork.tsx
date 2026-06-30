@@ -1,8 +1,25 @@
 import { Accordion, Span } from "@chakra-ui/react";
 import { Wrapper } from "./CloudNetwork.styles";
 import { CiGlobe } from "react-icons/ci";
+import UsersCard from "@/components/AreaChart/AreaChart";
+
+//Data
+import { usersSparklineData } from "@/data/data";
+
+//Icons
+import { TiGroupOutline } from "react-icons/ti";
+import { LiaUserSolid } from "react-icons/lia";
+import { GrGroup } from "react-icons/gr";
+import { PiUploadLight } from "react-icons/pi";
 
 const ChakraAccordion = () => {
+  const iconMap = {
+    users: LiaUserSolid,
+    groups: GrGroup,
+    uploads: PiUploadLight,
+    departments: TiGroupOutline,
+  };
+
   return (
     <Accordion.Root collapsible defaultValue={["b"]}>
       <Accordion.Item value="Cloud-network" border="none" p="0" m="0" mt="2">
@@ -10,17 +27,28 @@ const ChakraAccordion = () => {
           <Span bg={"var(--bg-page)"} p={"1"} borderRadius={"5px"}>
             <CiGlobe />
           </Span>
-          <Span flex="1" p="0" m="0" fontWeight={"bold"}>Cloud Network</Span>
+          <Span flex="1" p="0" m="0" fontWeight={"bold"}>
+            Cloud Network
+          </Span>
           <Accordion.ItemIndicator />
-        </Accordion.ItemTrigger> 
+        </Accordion.ItemTrigger>
         <Accordion.ItemContent>
           <Accordion.ItemBody>
             <Wrapper>
               <div className="item-1">
-                <div className="sub-item-1">1</div>
-                <div className="sub-item-2">2</div>
-                <div className="sub-item-3">3</div>
-                <div className="sub-item-4">4</div>
+                {Object.entries(usersSparklineData).map(([key, stat]) => {
+                  const Icon = iconMap[key as keyof typeof iconMap];
+
+                  return (
+                    <div className="sub-item-1">
+                      <UsersCard
+                        key={key}
+                        icon={<Icon size={15} />}
+                        {...stat}
+                      />
+                    </div>
+                  );
+                })}
               </div>
               <div className="item-2">2</div>
               <div className="item-3">3</div>
