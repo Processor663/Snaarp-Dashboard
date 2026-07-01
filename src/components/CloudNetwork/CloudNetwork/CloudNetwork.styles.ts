@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
     gap: .5rem;
+  
     
   }
 
@@ -30,7 +31,22 @@ export const Wrapper = styled.div`
     grid-template-columns: 1fr;
 
     .item-1 {
+      grid-template-columns: 1fr 1fr;
+     
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+
+    
+  }
+  @media screen and (max-width: 480px) {
+    grid-template-columns: 1fr;
+
+    .item-1 {
       grid-template-columns: 1fr;
+     
     }
   }
 `;

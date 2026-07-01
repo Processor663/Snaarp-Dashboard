@@ -64,6 +64,7 @@ export const asideBottomItems: AsideItemProps[] = [
 
 // ─── CLOUD NETWORK ──────────────────────────────────────────
 
+// Sparkline trend data 
 export type ChartDataPoint = {
   value: number;
 };
@@ -171,26 +172,42 @@ export const usersSparklineData: DashboardStatsResponse = {
   },
 };
 
-export const storageSummary = {
-  usedPercent: 80,
-  breakdown: [
-    { label: "Files", value: 30, color: "#6366f1" },
-    { label: "Folders", value: 15, color: "#8b5cf6" },
-    { label: "Videos", value: 12, color: "#a78bfa" },
-    { label: "Apps", value: 10, color: "#f59e0b" },
-    { label: "Audios", value: 8, color: "#10b981" },
-    { label: "Miscellaneous", value: 5, color: "#d1d5db" },
-    { label: "Available Space", value: 20, color: "#e5e7eb" },
-  ],
-};
 
-// Sparkline trend data (last 7 days) for each stat card
-export const sparklines = {
-  users: [3200, 3400, 3600, 3500, 3700, 3900, 3836],
-  groups: [250, 260, 270, 280, 295, 310, 316],
-  uploads: [200, 220, 250, 270, 290, 310, 316],
-  departments: [350, 340, 330, 320, 315, 320, 316],
-};
+//Storage Summary
+interface StorageSegment {
+  name: string;
+  value: number;
+  color: string;
+}
+
+interface LegendItem {
+  name: string;
+  color: string;
+}
+
+export const storageData: StorageSegment[] = [
+  { name: "Available Space", value: 20, color: "#f4f5f7" },
+  { name: "Files", value: 18, color: "#de03f1" },
+  { name: "Miscellaneous", value: 11, color: "#0d02dc" },
+  { name: "Videos", value: 18, color: "#0fde16" },
+  { name: "Folders", value: 14, color: "#faac03" },
+  { name: "Audios", value: 16, color: "#f52710" },
+  { name: "Apps", value: 20, color: "#1499ec" },
+];
+
+export const legendItems: LegendItem[] = [
+  { name: "Files", color: "#de03f1" },
+  { name: "Folders", color: "#faac03" },
+  { name: "Videos", color: "#0fde16" },
+  { name: "Apps", color: "#1499ec" },
+  { name: "Audios", color: "#f52710" },
+  { name: "Miscellaneous", color: "#0d02dc" },
+  { name: "Available Space", color: "#f4f5f7" },
+];
+
+
+
+
 
 // ─── FILE SHARING ────────────────────────────────────────────
 

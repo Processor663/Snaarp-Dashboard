@@ -1,12 +1,15 @@
 import { Accordion, Span } from "@chakra-ui/react";
+//Styles
 import { Wrapper } from "./CloudNetwork.styles";
-import { CiGlobe } from "react-icons/ci";
+//Components
 import UsersCard from "@/components/AreaChart/AreaChart";
+import StorageCard from "@/components/PieChart/PieChart";
 
 //Data
 import { usersSparklineData } from "@/data/data";
 
 //Icons
+import { CiGlobe } from "react-icons/ci";
 import { TiGroupOutline } from "react-icons/ti";
 import { LiaUserSolid } from "react-icons/lia";
 import { GrGroup } from "react-icons/gr";
@@ -50,7 +53,9 @@ const ChakraAccordion = () => {
                   );
                 })}
               </div>
-              <div className="item-2">2</div>
+              <div className="item-2">
+                <StorageCard />
+              </div>
               <div className="item-3">3</div>
               <div className="item-4">4</div>
             </Wrapper>
