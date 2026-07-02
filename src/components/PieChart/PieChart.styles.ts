@@ -146,6 +146,7 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 768px) {
     .storage-card {
       flex-direction: column;
+      padding: 1.5rem 0 0;
     }
 
     .upgrade-button > div {

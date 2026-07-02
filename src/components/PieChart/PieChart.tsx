@@ -31,7 +31,7 @@ const StorageCard = () => {
                 startAngle={90}
                 endAngle={-270}
                 labelLine={false}
-                stroke="none"
+                stroke="true"
                 isAnimationActive={true}
               >
                 {storageData.map((entry, index) => (
@@ -50,7 +50,7 @@ const StorageCard = () => {
               fill="none"
               stroke="#0d02dc"
               strokeWidth="5"
-              strokeDasharray="5 12"
+              strokeDasharray="5 9"
               strokeLinecap="round"
             />
           </svg>

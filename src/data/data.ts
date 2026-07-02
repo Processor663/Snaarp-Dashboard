@@ -243,14 +243,27 @@ export const activeUsers: ActiveUser[] = [
   { id: "3", name: "Samuel", lat: 13.033, lng: 80.2075, color: "#EA4335" },
 ];
 
-
-
 export const activeUsersByCountry = [
   { country: "United Kingdom", code: "GB", percent: 78 },
   { country: "Nigeria", code: "NG", percent: 61 },
   { country: "UAE", code: "AE", percent: 40 },
   { country: "Canada", code: "CA", percent: 59 },
   { country: "United States", code: "US", percent: 78 },
+];
+
+// Active Users by Country - progress bar data
+export interface CountryData {
+  code: string; // ISO 3166-1 alpha-2, lowercase
+  name: string;
+  percentage: number;
+}
+
+export const countryData: CountryData[] = [
+  { code: "gb", name: "United Kingdom", percentage: 78 },
+  { code: "ng", name: "Nigeria", percentage: 61 },
+  { code: "ae", name: "UAE", percentage: 45 },
+  { code: "ca", name: "Canada", percentage: 59 },
+  { code: "us", name: "United States of America", percentage: 78 },
 ];
 
 
@@ -268,33 +281,51 @@ export const deviceStats = {
   numberOfDownloads: { value: 316, change: 23, trend: "up" },
 };
 
-export const deviceBreakdown = {
-  plugged: 1923,
-  unplugged: 1913,
-  active: 592,
-  offline: 3836,
-  sent: 592,
-  received: 3836,
-};
 
-export const devicesByOS = [
-  { os: "Windows", count: 1403, icon: "windows" },
-  { os: "Mac", count: 632, icon: "apple" },
-  { os: "Linux", count: 1801, icon: "linux" },
-];
 
-export const usersByScope = [
-  { scope: "Organizations", count: 1403 },
-  { scope: "Departments", count: 632 },
-  { scope: "Groups", count: 1801 },
-];
 
-export const emailsByStatus = [
-  { status: "Read", count: 1403 },
-  { status: "Unread", count: 632 },
-];
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const deviceBreakdown = {
+//   plugged: 1923,
+//   unplugged: 1913,
+//   active: 592,
+//   offline: 3836,
+//   sent: 592,
+//   received: 3836,
+// };
+
+// export const devicesByOS = [
+//   { os: "Windows", count: 1403, icon: "windows" },
+//   { os: "Mac", count: 632, icon: "apple" },
+//   { os: "Linux", count: 1801, icon: "linux" },
+// ];
+
+// export const usersByScope = [
+//   { scope: "Organizations", count: 1403 },
+//   { scope: "Departments", count: 632 },
+//   { scope: "Groups", count: 1801 },
+// ];
+
+// export const emailsByStatus = [
+//   { status: "Read", count: 1403 },
+//   { status: "Unread", count: 632 },
+// ];
 
 // Device sparklines (last 7 days)
+
+
 export const deviceSparklines = {
   numberOfDevices: [3200, 3400, 3500, 3600, 3700, 3800, 3836],
   users: [3900, 3800, 3750, 3700, 3836, 3820, 3836],

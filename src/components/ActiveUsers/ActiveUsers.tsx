@@ -48,8 +48,8 @@ const ActiveUsersMap = () => {
       borderColor="gray.200"
       borderRadius="lg"
       overflow="hidden"
-      maxW="440px"
-      h="18.75rem"
+      // maxW="440px"
+      h="100%"
     >
       <MapContainer
         center={center}
