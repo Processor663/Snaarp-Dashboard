@@ -56,7 +56,7 @@ export const Wrapper = styled.div`
 
   /* Note box */
   .storage-note {
-    font-size: .8rem;
+    font-size: 0.8rem;
     border: 1px solid #e5e5e5;
     border-left: 4px solid #f0a500;
     border-right: 4px solid #f0a500;
@@ -117,8 +117,8 @@ export const Wrapper = styled.div`
   }
 
   .storage-legend-swatch {
-    width: .9rem;
-    height: .9rem;
+    width: 0.9rem;
+    height: 0.9rem;
     border-radius: 3px;
     flex-shrink: 0;
   }
@@ -128,25 +128,19 @@ export const Wrapper = styled.div`
   }
 
   .storage-legend-label {
-    font-size: .7rem;
+    font-size: 0.7rem;
     color: #444;
   }
 
   .upgrade-button {
     display: flex;
     justify-content: flex-end;
-
   }
 
-
   @media screen and (max-width: 1024px) {
-    /* .storage-button-row {
+    .upgrade-button {
       justify-content: center;
     }
-
-    .storage-upgrade-btn {
-      justify-content: center;
-    } */
   }
 
   @media screen and (max-width: 768px) {
@@ -154,9 +148,9 @@ export const Wrapper = styled.div`
       flex-direction: column;
     }
 
-    /* .storage-upgrade-btn {
-      width: 100%;
-     
-    } */
+    .upgrade-button > div {
+      flex: 1;
+      padding: 2vw 0;
+    }
   }
 `;

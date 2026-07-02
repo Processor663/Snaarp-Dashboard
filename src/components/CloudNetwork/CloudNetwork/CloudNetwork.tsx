@@ -4,6 +4,7 @@ import { Wrapper } from "./CloudNetwork.styles";
 //Components
 import UsersCard from "@/components/AreaChart/AreaChart";
 import StorageCard from "@/components/PieChart/PieChart";
+import ActiveUsersMap from "@/components/ActiveUsers/ActiveUsers";
 
 //Data
 import { usersSparklineData } from "@/data/data";
@@ -14,6 +15,7 @@ import { TiGroupOutline } from "react-icons/ti";
 import { LiaUserSolid } from "react-icons/lia";
 import { GrGroup } from "react-icons/gr";
 import { PiUploadLight } from "react-icons/pi";
+import FileSharingBarChart from "@/components/FileSharingChart/FileSharingChart";
 
 const ChakraAccordion = () => {
   const iconMap = {
@@ -56,8 +58,24 @@ const ChakraAccordion = () => {
               <div className="item-2">
                 <StorageCard />
               </div>
-              <div className="item-3">3</div>
-              <div className="item-4">4</div>
+              <div className="item-3">
+                <FileSharingBarChart />
+              </div>
+              <div className="item-4">
+                <div className="desc-container">
+                  <div className="desc">
+                    <span>icons</span>
+                    <h6>Active Users</h6>
+                  </div>
+                  <div>dropdown</div>
+                </div>
+                <div className="user-active-container">
+                  <div className="map">
+                    <ActiveUsersMap />
+                  </div>
+                  <div className="progress">1</div>
+                </div>
+              </div>
             </Wrapper>
           </Accordion.ItemBody>
         </Accordion.ItemContent>

@@ -226,7 +226,24 @@ export const fileSharingData = [
   { month: "DEC", public: 68, anyone: 42, org: 26 },
 ];
 
+
 // ─── ACTIVE USERS BY COUNTRY ─────────────────────────────────
+
+export interface ActiveUser {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  color: string;
+}
+
+export const activeUsers: ActiveUser[] = [
+  { id: "1", name: "Stanley", lat: 13.0385, lng: 80.2101, color: "#4C5FE8" },
+  { id: "2", name: "Chisom", lat: 13.035, lng: 80.2135, color: "#3EA845" },
+  { id: "3", name: "Samuel", lat: 13.033, lng: 80.2075, color: "#EA4335" },
+];
+
+
 
 export const activeUsersByCountry = [
   { country: "United Kingdom", code: "GB", percent: 78 },
@@ -236,13 +253,10 @@ export const activeUsersByCountry = [
   { country: "United States", code: "US", percent: 78 },
 ];
 
-export const activeUserMapPins = [
-  { lat: 51.5074, lng: -0.1278, label: "London", color: "#6366f1" },
-  { lat: 6.5244, lng: 3.3792, label: "Lagos", color: "#ef4444" },
-  { lat: 25.2048, lng: 55.2708, label: "Dubai", color: "#6366f1" },
-  { lat: 43.6532, lng: -79.3832, label: "Toronto", color: "#6366f1" },
-  { lat: 40.7128, lng: -74.006, label: "New York", color: "#6366f1" },
-];
+
+
+
+
 
 // ─── DEVICE MANAGEMENT ──────────────────────────────────────
 
