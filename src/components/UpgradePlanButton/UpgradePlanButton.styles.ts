@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type UpgradePlanButtonProps = {
-  blue?: boolean;
+  $blue?: string;
 };
 
 export const Wrapper = styled.div<UpgradePlanButtonProps>`
@@ -9,8 +9,8 @@ export const Wrapper = styled.div<UpgradePlanButtonProps>`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background: ${({ blue }) => (blue ? "blue" : "transparent")};
-  color: ${({ blue }) => (blue ? "#fff" : "#5b6be1")};
+  background: ${({ $blue }) => ($blue ? "blue" : "transparent")};
+  color: ${({ $blue }) => ($blue ? "#fff" : "#5b6be1")};
   border: 1.5px solid #5b6be1;
   border-radius: 8px;
   padding: 0.5em 1.5em;
@@ -19,7 +19,11 @@ export const Wrapper = styled.div<UpgradePlanButtonProps>`
   cursor: pointer;
 
   &:hover {
-    background: ${({ blue }) => (blue ? "transparent" : "#041597")};
-    color: ${({ blue }) => (blue ? "#3546c3" : "#fff")};
+    background: ${({ $blue }) => ($blue ? "transparent" : "#041597")};
+    color: ${({ $blue }) => ($blue ? "#3546c3" : "#fff")};
+  }
+
+  @media screen and (max-width:480px) {
+    display: none;
   }
 `;

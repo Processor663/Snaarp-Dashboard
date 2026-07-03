@@ -20,7 +20,7 @@ const UsersCard = ({
 }: UsersCardProps) => {
  const gradientId = `gradient-${title.replace(/\s+/g, "-").toLowerCase()}`;
   return (
-    <Wrapper trend={trend}>
+    <Wrapper $trend={trend}>
       <div className="stat-card">
         <div className="stat-card-header">
           <span className="stat-icon">{icon}</span>

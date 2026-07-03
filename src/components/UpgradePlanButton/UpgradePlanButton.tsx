@@ -5,15 +5,15 @@ import { IoFlashOutline } from "react-icons/io5";
 
 
 type UpgradePlanButtonProps = {
-  blue?: boolean;
+  blue?: string;
 }; 
 
 
 const UpgradePlanButton = ({blue}:UpgradePlanButtonProps) => {
   return (
-    <Wrapper blue={blue}>
+    <Wrapper $blue={blue}>
       <IoFlashOutline size={20} />
-      <button className="storage-upgrade-btn">Upgrade Plan</button>
+      <span className="storage-upgrade-btn">Upgrade Plan</span>
     </Wrapper>
   );
 };

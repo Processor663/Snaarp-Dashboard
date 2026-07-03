@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type TrendProps = {
-  trend: "up" | "down";
+  $trend: "up" | "down";
 };
 
 export const Wrapper = styled.div<TrendProps>`
@@ -49,7 +49,7 @@ export const Wrapper = styled.div<TrendProps>`
     display: flex;
     align-items: center;
     margin-left: 0.3rem;
-    color: ${({ trend }) => (trend === "down" ? "#e34948" : "#1bd621")};
+    color: ${({ $trend }) => ($trend === "down" ? "#e34948" : "#1bd621")};
     font-size: 0.9rem;
   }
 
