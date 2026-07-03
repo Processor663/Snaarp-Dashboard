@@ -18,6 +18,7 @@ const UsersCard = ({
   chartData,
   icon,
 }: UsersCardProps) => {
+ const gradientId = `gradient-${title.replace(/\s+/g, "-").toLowerCase()}`;
   return (
     <Wrapper trend={trend}>
       <div className="stat-card">
@@ -43,7 +44,7 @@ const UsersCard = ({
               <AreaChart data={chartData}>
                 <defs>
                   <linearGradient
-                    id={`gradient-${title}`}
+                    id={gradientId}
                     x1="0"
                     y1="0"
                     x2="0"
@@ -66,7 +67,7 @@ const UsersCard = ({
                 <Area
                   dataKey="value"
                   stroke={trend === "down" ? "#e34948" : "#05b116"}
-                  fill={`url(#gradient-${title})`}
+                  fill={`url(#${gradientId})`}
                   strokeWidth={1}
                   dot={false}
                 />

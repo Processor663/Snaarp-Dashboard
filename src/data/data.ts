@@ -23,7 +23,6 @@
 //   </MainContent>
 // </AppShell>
 
-
 import { MdDashboard, MdDevices, MdStorage } from "react-icons/md";
 import { HiOfficeBuilding } from "react-icons/hi";
 import { TbReport, TbReportAnalytics } from "react-icons/tb";
@@ -39,9 +38,9 @@ import { MdOutlineContactSupport } from "react-icons/md";
 // ============================================================
 
 export type AsideItemProps = {
-  label: string,
-  icon: IconType
-}
+  label: string;
+  icon: IconType;
+};
 
 export const asideItemData: AsideItemProps[] = [
   { label: "Dashboard", icon: MdDashboard },
@@ -53,24 +52,22 @@ export const asideItemData: AsideItemProps[] = [
   { label: "Settings", icon: IoSettingsOutline },
   { label: "Device Management", icon: MdDevices },
   { label: "Productivity Report", icon: TbReportAnalytics },
-  
 ];
 
 export const asideBottomItems: AsideItemProps[] = [
   { label: "User Panel", icon: HiOutlineChartBar },
   { label: "Support", icon: MdOutlineContactSupport },
-
-]
+];
 
 // ─── CLOUD NETWORK ──────────────────────────────────────────
 
-// Sparkline trend data 
+// Sparkline trend data
 export type ChartDataPoint = {
   value: number;
 };
 
 export type DashboardStat = {
-  title: string,
+  title: string;
   total: string;
   trend: "up" | "down";
   percentage: string;
@@ -172,7 +169,6 @@ export const usersSparklineData: DashboardStatsResponse = {
   },
 };
 
-
 //Storage Summary
 interface StorageSegment {
   name: string;
@@ -205,10 +201,6 @@ export const legendItems: LegendItem[] = [
   { name: "Available Space", color: "#f4f5f7" },
 ];
 
-
-
-
-
 // ─── FILE SHARING ────────────────────────────────────────────
 
 export const fileSharingData = [
@@ -225,7 +217,6 @@ export const fileSharingData = [
   { month: "NOV", public: 78, anyone: 46, org: 30 },
   { month: "DEC", public: 68, anyone: 42, org: 26 },
 ];
-
 
 // ─── ACTIVE USERS BY COUNTRY ─────────────────────────────────
 
@@ -266,36 +257,120 @@ export const countryData: CountryData[] = [
   { code: "us", name: "United States of America", percentage: 78 },
 ];
 
-
-
-
-
-
 // ─── DEVICE MANAGEMENT ──────────────────────────────────────
 
-export const deviceStats = {
-  numberOfDevices: { value: 3836, change: 15, trend: "up" },
-  users: { value: 3836, change: -15, trend: "down" },
-  emails: { value: 316, change: -23, trend: "down" },
-  numberOfApps: { value: 316, change: -23, trend: "down" },
-  numberOfDownloads: { value: 316, change: 23, trend: "up" },
+export const deviceStats: DashboardStatsResponse = {
+  numberOfDevices: {
+    title: "Number of Devices",
+    total: "3,836",
+    percentage: "15%",
+    trend: "up",
+    chartData: [
+      { value: 5 },
+      { value: 15 },
+      { value: 20 },
+      { value: 30 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 60 },
+      { value: 75 },
+      { value: 83 },
+      { value: 80 },
+      { value: 82 },
+      { value: 85 },
+      { value: 90 },
+    ],
+  },
+  users: {
+    title: "Users",
+    total: "3,836",
+    percentage: "15%",
+    trend: "down",
+    chartData: [
+      { value: 90 },
+      { value: 85 },
+      { value: 82 },
+      { value: 80 },
+      { value: 83 },
+      { value: 75 },
+      { value: 60 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 30 },
+      { value: 20 },
+      { value: 15 },
+      { value: 5 },
+    ],
+  },
+  emails: {
+    title: "Emails",
+    total: "316",
+    percentage: "7.5%",
+    trend: "down",
+    chartData: [
+      { value: 90 },
+      { value: 85 },
+      { value: 82 },
+      { value: 80 },
+      { value: 83 },
+      { value: 75 },
+      { value: 60 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 30 },
+      { value: 20 },
+      { value: 15 },
+      { value: 5 },
+    ],
+  },
+  numberOfApps: {
+    title: "Number of Apps",
+    total: "316",
+    percentage: "7.5%",
+    trend: "down",
+    chartData: [
+      { value: 90 },
+      { value: 85 },
+      { value: 82 },
+      { value: 80 },
+      { value: 83 },
+      { value: 75 },
+      { value: 60 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 30 },
+      { value: 20 },
+      { value: 15 },
+      { value: 5 },
+    ],
+  },
+  numberOfDownloads: {
+    title: "Number of Downloads",
+    total: "316",
+    percentage: "7.5%",
+    trend: "up",
+    chartData: [
+      { value: 5 },
+      { value: 15 },
+      { value: 20 },
+      { value: 30 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 60 },
+      { value: 75 },
+      { value: 83 },
+      { value: 80 },
+      { value: 82 },
+      { value: 85 },
+      { value: 90 },
+    ],
+  },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // export const deviceBreakdown = {
 //   plugged: 1923,
@@ -325,14 +400,13 @@ export const deviceStats = {
 
 // Device sparklines (last 7 days)
 
-
-export const deviceSparklines = {
-  numberOfDevices: [3200, 3400, 3500, 3600, 3700, 3800, 3836],
-  users: [3900, 3800, 3750, 3700, 3836, 3820, 3836],
-  emails: [400, 380, 360, 340, 330, 320, 316],
-  numberOfApps: [400, 380, 360, 340, 330, 320, 316],
-  numberOfDownloads: [200, 220, 250, 270, 290, 310, 316],
-};
+// export const deviceSparklines = {
+//   numberOfDevices: [3200, 3400, 3500, 3600, 3700, 3800, 3836],
+//   users: [3900, 3800, 3750, 3700, 3836, 3820, 3836],
+//   emails: [400, 380, 360, 340, 330, 320, 316],
+//   numberOfApps: [400, 380, 360, 340, 330, 320, 316],
+//   numberOfDownloads: [200, 220, 250, 270, 290, 310, 316],
+// };
 
 // ─── PRODUCTIVITY REPORT ─────────────────────────────────────
 

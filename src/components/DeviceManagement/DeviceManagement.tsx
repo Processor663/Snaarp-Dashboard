@@ -2,16 +2,31 @@ import { Accordion, Span } from "@chakra-ui/react";
 
 //Icons
 import { PiDevicesLight } from "react-icons/pi";
+import { TiGroupOutline } from "react-icons/ti";
+import { LiaUserSolid } from "react-icons/lia";
+import { GrGroup } from "react-icons/gr";
+import { PiUploadLight } from "react-icons/pi";
 
 //components
 import UpgradePlanButton from "../UpgradePlanButton/UpgradePlanButton";
-import UsersCard  from "@/components/AreaChart/AreaChart";
+import UsersCard from "@/components/AreaChart/AreaChart";
 
+//Data
+import { deviceStats } from "@/data/data";
+// import { countryData } from "@/data/data";
 
 //styles
 import { Wrapper } from "./DeviceManagement.styles";
 
 const ChakraAccordion = () => {
+  // const iconMap = {
+  //   numberOfDevices: PiUploadLight,
+  //   users: LiaUserSolid,
+  //   emails: GrGroup,
+  //   numberOfApps: TiGroupOutline,
+  //   numberOfDownloads: TiGroupOutline,
+  // };
+
   return (
     <Accordion.Root collapsible defaultValue={["b"]}>
       <Accordion.Item
@@ -28,18 +43,30 @@ const ChakraAccordion = () => {
           <Span flex="1" p="0" m="0" fontWeight={"bold"}>
             Device Management Dashboard
           </Span>
-          <UpgradePlanButton blue />
+          {/* <UpgradePlanButton blue={true} /> */}
           <Accordion.ItemIndicator />
         </Accordion.ItemTrigger>
         <Accordion.ItemContent>
           <Accordion.ItemBody>
             <Wrapper>
               <div className="device-desc-1">
-                <UsersCard/>
+                <UsersCard
+                  icon={<LiaUserSolid size={15} />}
+                  {...deviceStats.users}
+                />
               </div>
-              <div className="device-desc-2">2</div>
-              <div className="device-desc-3">3</div>
-              <div className="device-desc-4">4</div>
+              <div className="device-desc-2">
+                <UsersCard
+                  icon={<LiaUserSolid size={15} />}
+                  {...deviceStats.numberOfDevices}
+                />
+              </div>
+              <div className="device-desc-3">
+                <UsersCard
+                  icon={<LiaUserSolid size={15} />}
+                  {...deviceStats.users}
+                />
+              </div>
             </Wrapper>
           </Accordion.ItemBody>
         </Accordion.ItemContent>

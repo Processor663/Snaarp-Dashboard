@@ -1,4 +1,5 @@
 import { Accordion, Span } from "@chakra-ui/react";
+import { Box, Flex, Text, Progress } from "@chakra-ui/react";
 
 //Styles
 import { Wrapper } from "./CloudNetwork.styles";
@@ -20,8 +21,7 @@ import { PiUploadLight } from "react-icons/pi";
 import FileSharingBarChart from "@/components/FileSharingChart/FileSharingChart";
 import { AiOutlineUser } from "react-icons/ai";
 
-//Progress bar
-import { Box, Flex, Text, Progress } from "@chakra-ui/react";
+
 
 
 
