@@ -6,11 +6,18 @@ export const Wrapper = styled.div`
   gap: 0.5rem;
   grid-auto-rows: auto;
   /* overflow-x: auto; */
-  background-color: red;
+  /* background-color: red; */
+
+  .desc-flex-column {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
   .first-second-container {
     background-color: var(--bg-card);
     border-radius: 10px;
+    padding-bottom: .5rem;
   }
 
   .device-desc-4 .user-card-1,
@@ -20,9 +27,9 @@ export const Wrapper = styled.div`
   }
 
   .device-desc-4 .user-card-2 {
-    margin-top: .5em;
     background-color: var(--bg-card);
     border-radius: 10px;
+    margin-top: .2rem;
   }
 
   @media screen and (max-width: 768px) {

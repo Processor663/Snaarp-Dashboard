@@ -307,7 +307,7 @@ export const deviceStats: DashboardStatsResponse = {
   emails: {
     title: "Emails",
     total: "316",
-    percentage: "7.5%",
+    percentage: "23%",
     trend: "down",
     chartData: [
       { value: 90 },
@@ -329,7 +329,7 @@ export const deviceStats: DashboardStatsResponse = {
   numberOfApps: {
     title: "Number of Apps",
     total: "316",
-    percentage: "7.5%",
+    percentage: "23%",
     trend: "down",
     chartData: [
       { value: 90 },
@@ -351,7 +351,7 @@ export const deviceStats: DashboardStatsResponse = {
   numberOfDownloads: {
     title: "Number of Downloads",
     total: "316",
-    percentage: "7.5%",
+    percentage: "23%",
     trend: "up",
     chartData: [
       { value: 5 },
