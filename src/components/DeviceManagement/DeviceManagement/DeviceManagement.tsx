@@ -16,13 +16,13 @@ import { PiLinuxLogoLight } from "react-icons/pi";
 import { PiBuildingsLight } from "react-icons/pi";
 import { GrGroup } from "react-icons/gr";
 import { TbUsersGroup } from "react-icons/tb";
-import { VscMailRead } from "react-icons/vsc";
+// import { VscMailRead } from "react-icons/vsc";
 import { HiOutlineMailOpen } from "react-icons/hi";
 
 //components
-import UpgradePlanButton from "../../UpgradePlanButton/UpgradePlanButton";
+import UpgradePlanButton from "@/components/UpgradePlanButton/UpgradePlanButton";
 import UsersCard from "@/components/AreaChart/AreaChart";
-import DeviceManageMiddle from "../DeviceManageMiddle/DeviceManageMiddle";
+import DeviceManageMiddle from "@/components/DeviceManagement/DeviceManageMiddle/DeviceManageMiddle";
 
 //Data
 import { deviceStats } from "@/data/data";
@@ -30,7 +30,7 @@ import { deviceStats } from "@/data/data";
 
 //styles
 import { Wrapper } from "./DeviceManagement.styles";
-import DeviceManageBottom from "../DeviceManageBottom/DeviceManageBottom";
+import DeviceManageBottom from "@/components/DeviceManagement/DeviceManageBottom/DeviceManageBottom";
 
 const ChakraAccordion = () => {
   return (

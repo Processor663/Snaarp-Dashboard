@@ -34,15 +34,21 @@ export const Wrapper = styled.div<TrendProps>`
   .stat-card-info {
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 58%;
     gap: 4px;
   }
 
   .stat-card-value {
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1;
+  }
+
+  .unit {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 100;
   }
 
   .stat-card-change {
@@ -64,7 +70,7 @@ export const Wrapper = styled.div<TrendProps>`
 
   .stat-card-chart {
     flex-shrink: 0;
-    width: 45%;
+    width: 42%;
     height: 4rem;
   }
 `;

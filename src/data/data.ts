@@ -372,246 +372,98 @@ export const deviceStats: DashboardStatsResponse = {
   },
 };
 
-// export const deviceBreakdown = {
-//   plugged: 1923,
-//   unplugged: 1913,
-//   active: 592,
-//   offline: 3836,
-//   sent: 592,
-//   received: 3836,
-// };
-
-// export const devicesByOS = [
-//   { os: "Windows", count: 1403, icon: "windows" },
-//   { os: "Mac", count: 632, icon: "apple" },
-//   { os: "Linux", count: 1801, icon: "linux" },
-// ];
-
-// export const usersByScope = [
-//   { scope: "Organizations", count: 1403 },
-//   { scope: "Departments", count: 632 },
-//   { scope: "Groups", count: 1801 },
-// ];
-
-// export const emailsByStatus = [
-//   { status: "Read", count: 1403 },
-//   { status: "Unread", count: 632 },
-// ];
-
-// Device sparklines (last 7 days)
-
-// export const deviceSparklines = {
-//   numberOfDevices: [3200, 3400, 3500, 3600, 3700, 3800, 3836],
-//   users: [3900, 3800, 3750, 3700, 3836, 3820, 3836],
-//   emails: [400, 380, 360, 340, 330, 320, 316],
-//   numberOfApps: [400, 380, 360, 340, 330, 320, 316],
-//   numberOfDownloads: [200, 220, 250, 270, 290, 310, 316],
-// };
-
 // ─── PRODUCTIVITY REPORT ─────────────────────────────────────
 
-export const productivityStats = {
-  hoursProductivity: { value: 576, unit: "Hrs", change: -15, trend: "down" },
-  daysActivity: { value: 267, unit: "Days", change: 15, trend: "up" },
-  users: { value: 3836, unit: "", change: -15, trend: "down" },
-  webActivity: { value: 178, unit: "Activities", change: 15, trend: "up" },
+export const productivityReport: DashboardStatsResponse = {
+  hoursProductivity: {
+    title: "Hours Productivity",
+    total: "576 Hrs",
+    trend: "down",
+    percentage: "15%",
+    chartData: [
+      { value: 90 },
+      { value: 85 },
+      { value: 82 },
+      { value: 80 },
+      { value: 83 },
+      { value: 75 },
+      { value: 60 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 30 },
+      { value: 20 },
+      { value: 15 },
+      { value: 5 },
+    ],
+  },
+
+  daysActivity: {
+    title: "Days Activity",
+    total: "267 Days",
+    trend: "up",
+    percentage: "15%",
+    chartData: [
+      { value: 5 },
+      { value: 15 },
+      { value: 20 },
+      { value: 30 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 60 },
+      { value: 75 },
+      { value: 83 },
+      { value: 80 },
+      { value: 82 },
+      { value: 85 },
+      { value: 90 },
+    ],
+  },
+
+  users: {
+    title: "Users",
+    total: "3,836",
+    trend: "down",
+    percentage: "15%",
+    chartData: [
+      { value: 90 },
+      { value: 85 },
+      { value: 82 },
+      { value: 80 },
+      { value: 83 },
+      { value: 75 },
+      { value: 60 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 30 },
+      { value: 20 },
+      { value: 15 },
+      { value: 5 },
+    ],
+  },
+
+  webActivity: {
+    title: "Web Activity",
+    total: "178 Activities",
+    trend: "up",
+    percentage: "15%",
+    chartData: [
+      { value: 5 },
+      { value: 15 },
+      { value: 20 },
+      { value: 30 },
+      { value: 40 },
+      { value: 40 },
+      { value: 40 },
+      { value: 60 },
+      { value: 75 },
+      { value: 83 },
+      { value: 80 },
+      { value: 82 },
+      { value: 85 },
+      { value: 90 },
+    ],
+  },
 };
-
-export const productivitySparklines = {
-  hoursProductivity: [600, 590, 580, 575, 570, 573, 576],
-  daysActivity: [230, 240, 250, 255, 260, 265, 267],
-  users: [3900, 3870, 3850, 3840, 3836, 3838, 3836],
-  webActivity: [150, 155, 160, 165, 170, 175, 178],
-};
-
-// ─── EMAIL ───────────────────────────────────────────────────
-
-export const emailSummary = {
-  totalSent: 5421,
-  sent: 583,
-  received: 932,
-  unsent: 12,
-  total: 1347,
-};
-
-export const totalEmailChartData = [
-  { month: "JAN", sent: 300, received: 500, unsent: 8 },
-  { month: "FEB", sent: 350, received: 550, unsent: 10 },
-  { month: "MAR", sent: 400, received: 600, unsent: 12 },
-  { month: "APR", sent: 380, received: 580, unsent: 9 },
-  { month: "MAY", sent: 420, received: 620, unsent: 11 },
-  { month: "JUN", sent: 500, received: 750, unsent: 15 },
-  { month: "JUL", sent: 583, received: 932, unsent: 12 },
-  { month: "AUG", sent: 450, received: 700, unsent: 10 },
-  { month: "SEP", sent: 480, received: 720, unsent: 13 },
-  { month: "OCT", sent: 510, received: 800, unsent: 14 },
-  { month: "NOV", sent: 490, received: 780, unsent: 11 },
-  { month: "DEC", sent: 460, received: 750, unsent: 10 },
-];
-
-// ─── ONLINE USERS TABLE ──────────────────────────────────────
-
-export const onlineUsers = [
-  {
-    id: 1,
-    name: "Annette Black",
-    status: "online",
-    location: "Ottawa, Canada",
-    org: "MSBM, Ottawa",
-    device: "Windows",
-    activity: "Google Chrome",
-    timeUsage: "3 hrs 12 min",
-    avatar: "AB",
-  },
-  {
-    id: 2,
-    name: "Floyd Miles",
-    status: "online",
-    location: "Lagos, Nigeria",
-    org: "MSBM, Lagos",
-    device: "Windows",
-    activity: "Instagram",
-    timeUsage: "2 hrs 8 min",
-    avatar: "FM",
-  },
-  {
-    id: 3,
-    name: "Ronald Richards",
-    status: "offline",
-    location: "Dubai, UAE",
-    org: "MSBM, Dubai",
-    device: "Mac",
-    activity: "Microsoft Teams",
-    timeUsage: "6 hrs 45 min",
-    avatar: "RR",
-  },
-  {
-    id: 4,
-    name: "Guy Hawkins",
-    status: "offline",
-    location: "London, UK",
-    org: "MSBM, London",
-    device: "Windows",
-    activity: "Instagram",
-    timeUsage: "1 hr 30 min",
-    avatar: "GH",
-  },
-  {
-    id: 5,
-    name: "Jane Cooper",
-    status: "online",
-    location: "Frankfurt, Germany",
-    org: "MSBM, Frankfurt",
-    device: "Mac",
-    activity: "Google Chrome",
-    timeUsage: "9 hrs 10 min",
-    avatar: "JC",
-  },
-  {
-    id: 6,
-    name: "Leslie Alexander",
-    status: "offline",
-    location: "Rome, Italy",
-    org: "MSBM, Rome",
-    device: "Windows",
-    activity: "YouTube",
-    timeUsage: "45 min",
-    avatar: "LA",
-  },
-  {
-    id: 7,
-    name: "Annette Black",
-    status: "offline",
-    location: "Calgary, Canada",
-    org: "MSBM, Calgary",
-    device: "Linux",
-    activity: "Opera Mini",
-    timeUsage: "45 min",
-    avatar: "AB",
-  },
-  {
-    id: 8,
-    name: "Floyd Miles",
-    status: "offline",
-    location: "Mumbai, India",
-    org: "MSBM, Mumbai",
-    device: "Mac",
-    activity: "WhatsApp",
-    timeUsage: "45 min",
-    avatar: "FM",
-  },
-  {
-    id: 9,
-    name: "Cody Fisher",
-    status: "online",
-    location: "Lagos, Nigeria",
-    org: "MSBM, Lagos",
-    device: "Windows",
-    activity: "Microsoft Teams",
-    timeUsage: "45 min",
-    avatar: "CF",
-  },
-  {
-    id: 10,
-    name: "Dianne Russell",
-    status: "online",
-    location: "London, UK",
-    org: "MSBM, London",
-    device: "Linux",
-    activity: "YouTube",
-    timeUsage: "45 min",
-    avatar: "DR",
-  },
-];
-
-// ─── APP ACTIVITY REPORT ─────────────────────────────────────
-
-export const appActivityReport = [
-  {
-    app: "Google Chrome",
-    totalUsers: 34,
-    totalHours: "3 hrs 12 min",
-    date: "2024-06-26 15:33:49",
-  },
-  {
-    app: "YouTube",
-    totalUsers: 12,
-    totalHours: "2 hrs 8 min",
-    date: "2024-05-26 12:45:41",
-  },
-  {
-    app: "Microsoft Teams",
-    totalUsers: 16,
-    totalHours: "6 hrs 45 min",
-    date: "2024-05-21 16:28:21",
-  },
-  {
-    app: "WhatsApp",
-    totalUsers: 49,
-    totalHours: "1 hr 30 min",
-    date: "2024-06-26 15:33:49",
-  },
-  {
-    app: "Opera Mini",
-    totalUsers: 3,
-    totalHours: "9 hrs 10 min",
-    date: "2024-05-21 16:28:21",
-  },
-  {
-    app: "Instagram",
-    totalUsers: 22,
-    totalHours: "45 min",
-    date: "2024-06-26 12:45:41",
-  },
-];
-
-// ─── WEB ACTIVITY ────────────────────────────────────────────
-
-export const webActivity = [
-  { site: "Chrome", percent: 78, hours: "5 hrs 12 min", color: "#6366f1" },
-  { site: "Gmail", percent: 61, hours: "2 hrs 24 min", color: "#10b981" },
-  { site: "Firefox", percent: 45, hours: "40 min", color: "#f59e0b" },
-  { site: "Instagram", percent: 78, hours: "5 hrs 6 min", color: "#ec4899" },
-  { site: "X.com", percent: 59, hours: "1 hr 8 min", color: "#6b7280" },
-  { site: "Facebook", percent: 61, hours: "3 hrs 1 min", color: "#3b82f6" },
-];

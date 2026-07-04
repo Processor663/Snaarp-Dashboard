@@ -39,14 +39,14 @@ export const Wrapper = styled.div`
   }
 
   .storage-chart-center-value {
-    font-size: 1.625rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #1a1a1a;
     line-height: 1;
   }
 
   .storage-chart-center-label {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 
   /* ── Right side ── */

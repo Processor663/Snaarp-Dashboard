@@ -1,6 +1,7 @@
-import  type { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AreaChart, Area, ResponsiveContainer } from "recharts";
 import { GoArrowDown } from "react-icons/go";
+import { LiaArrowUpSolid } from "react-icons/lia";
 import { Wrapper } from "./AreaChart.styles";
 
 //Types
@@ -18,7 +19,21 @@ const UsersCard = ({
   chartData,
   icon,
 }: UsersCardProps) => {
- const gradientId = `gradient-${title.replace(/\s+/g, "-").toLowerCase()}`;
+  const gradientId = `gradient-${title.replace(/\s+/g, "-").toLowerCase()}`;
+  let text;
+
+  if (total.includes(" ")) {
+    const [value, unit] = total.split(" ");
+
+    text = (
+      <>
+        {value} <span className="unit">{unit}</span>
+      </>
+    );
+  } else {
+    text = total;
+  }
+
   return (
     <Wrapper $trend={trend}>
       <div className="stat-card">
@@ -30,9 +45,9 @@ const UsersCard = ({
         <div className="stat-card-body">
           <div className="stat-card-info">
             <div className="stat-card-value">
-              <div>{total}</div>
+              <div>{text}</div>
               <div className="stat-card-change">
-                <GoArrowDown />
+                {trend === "down" ? <GoArrowDown /> : <LiaArrowUpSolid />}
                 <span>{percentage}</span>
               </div>
             </div>
@@ -43,13 +58,7 @@ const UsersCard = ({
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={chartData}>
                 <defs>
-                  <linearGradient
-                    id={gradientId}
-                    x1="0"
-                    y1="0"
-                    x2="0"
-                    y2="1"
-                  >
+                  <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
                     <stop
                       offset="0%"
                       stopColor={trend === "down" ? "#e34948" : "#05b116"}
