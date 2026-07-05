@@ -79,15 +79,10 @@ const EmailChart = () => {
         </Flex>
 
         <Box textAlign="center" mt="6">
-          <Text
-            fontSize="xs"
-            fontWeight="bold"
-            color="gray.500"
-            letterSpacing="wide"
-          >
+          <Text fontSize="lg" fontWeight="bold" letterSpacing="wide">
             TOTAL EMAILS SENT
           </Text>
-          <Text fontSize="2xl" fontWeight="bold" mt="1">
+          <Text fontSize="lg" fontWeight="bold" mt="1">
             {totalEmailsSent}
           </Text>
         </Box>

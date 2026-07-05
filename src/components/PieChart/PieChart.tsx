@@ -48,7 +48,7 @@ const StorageCard = () => {
               cy="90"
               r="52"
               fill="none"
-              stroke="#0d02dc"
+              stroke="#022edc"
               strokeWidth="5"
               strokeDasharray="5 9"
               strokeLinecap="round"

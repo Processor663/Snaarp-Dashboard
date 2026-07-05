@@ -3,6 +3,8 @@ import { useState } from "react";
 import {
   AreaChart,
   Area,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   Tooltip,
@@ -19,7 +21,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { LuMail } from "react-icons/lu";
-import { BsBarChartFill } from "react-icons/bs";
+import { PiChartBar } from "react-icons/pi";
 import { HiOutlineChevronDown } from "react-icons/hi2";
 import { AiOutlineLineChart } from "react-icons/ai";
 
@@ -103,32 +105,88 @@ const TotalEmail = () => {
             aria-label="Bar chart view"
             size="sm"
             variant={chartType === "bar" ? "solid" : "outline"}
-            colorPalette={chartType === "bar" ? "blue" : "gray"}
+            colorPalette={chartType === "bar" ? "#f00c08" : "gray"}
             onClick={() => setChartType("bar")}
+            border="1px solid"
+            borderColor={"var(--text-secondary)"}
+            // color="var(--text-primary)"
+            bg={chartType === "bar" ? "#6c63ff" : "transparent"}
+            color={chartType === "bar" ? "white" : "gray.500"}
+            _hover={{
+              bg: "#6c63ff",
+              color: "#fff",
+            }}
           >
-            <BsBarChartFill />
+            <PiChartBar />
           </IconButton>
           <IconButton
             aria-label="Line chart view"
             size="sm"
             variant={chartType === "line" ? "solid" : "outline"}
-            colorPalette={chartType === "line" ? "blue" : "gray"}
+            colorPalette={chartType === "line" ? "#789fcd" : "gray"}
             onClick={() => setChartType("line")}
+            border="1px solid"
+            borderColor={"var(--text-secondary)"}
+            // color="#6c63ff"
+            bg={chartType === "bar" ? "transparent" : "#6c63ff"}
+            color={chartType === "bar" ? "gray.500" : "white"}
+            _hover={{
+              bg: "#6c63ff",
+              color: "#fff",
+            }}
           >
             <AiOutlineLineChart />
           </IconButton>
 
           <Menu.Root>
             <Menu.Trigger asChild>
-              <Button size="sm" variant="outline">
+              <Button
+                size="sm"
+                variant="outline"
+                border="1px solid"
+                borderColor={"var(--text-secondary)"}
+                color="var(--text-secondary)"
+                bg={"transparent"}
+                padding={"0 .6rem 0 .6rem"}
+                _hover={{
+                  bg: "#6c63ff",
+                  color: "#fff",
+                }}
+              >
                 {range} <HiOutlineChevronDown />
               </Button>
             </Menu.Trigger>
             <Portal>
               <Menu.Positioner>
-                <Menu.Content>
+                <Menu.Content
+                  bg="white"
+                  borderRadius="12px"
+                  border="1px solid"
+                  borderColor="gray.100"
+                  boxShadow="0 8px 24px rgba(0, 0, 0, 0.1)"
+                  py="2"
+                  px="1.5"
+                  minW="130px"
+                  zIndex="popover"
+                  color="#000"
+                >
                   {["Week", "Month", "Year"].map((r) => (
-                    <Menu.Item key={r} value={r} onClick={() => setRange(r)}>
+                    <Menu.Item
+                      key={r}
+                      value={r}
+                      onClick={() => setRange(r)}
+                      bg={"#f0efff"}
+                      color={"#6c63ff"}
+                      fontWeight={"semibold"}
+                      fontSize="sm"
+                      borderRadius="8px"
+                      px="3"
+                      py="2"
+                      mb="1"
+                      cursor="pointer"
+                      transition="background 0.12s ease"
+                      _last={{ mb: 0 }}
+                    >
                       {r}
                     </Menu.Item>
                   ))}
@@ -141,60 +199,99 @@ const TotalEmail = () => {
 
       <Box h="380px" w="100%">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            data={monthlyEmailData}
-            margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
-          >
-            <defs>
-              <linearGradient
-                id="totalEmailGradient"
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop offset="0%" stopColor="#6c63ff" stopOpacity={0.25} />
-                <stop offset="100%" stopColor="#6c63ff" stopOpacity={0} />
-              </linearGradient>
-            </defs>
+          {chartType === "bar" ? (
+            <BarChart
+              data={monthlyEmailData}
+              margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
+            >
+              <CartesianGrid
+                strokeDasharray="3 3"
+                vertical={false}
+                stroke="#f0f0f0"
+              />
 
-            <CartesianGrid
-              strokeDasharray="3 3"
-              vertical={false}
-              stroke="#f0f0f0"
-            />
+              <XAxis
+                dataKey="month"
+                axisLine={false}
+                tickLine={false}
+                tick={{ fontSize: 12, fill: "#9ca3af" }}
+              />
+              <YAxis
+                axisLine={false}
+                tickLine={false}
+                tick={{ fontSize: 12, fill: "#9ca3af" }}
+                domain={[0, 7000]}
+                ticks={[0, 1000, 3000, 5000, 7000]}
+              />
 
-            <XAxis
-              dataKey="month"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12, fill: "#9ca3af" }}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12, fill: "#9ca3af" }}
-              domain={[0, 7000]}
-              ticks={[0, 1000, 3000, 5000, 7000]}
-            />
+              <Tooltip
+                content={<CustomTooltip />}
+                cursor={{ fill: "#f5f5ff" }}
+              />
 
-            <Tooltip content={<CustomTooltip />} />
+              <Bar
+                dataKey="total"
+                fill="#6c63ff"
+                radius={[4, 4, 0, 0]}
+                maxBarSize={28}
+              />
+            </BarChart>
+          ) : (
+            <AreaChart
+              data={monthlyEmailData}
+              margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
+            >
+              <defs>
+                <linearGradient
+                  id="totalEmailGradient"
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor="#6c63ff" stopOpacity={0.25} />
+                  <stop offset="100%" stopColor="#6c63ff" stopOpacity={0} />
+                </linearGradient>
+              </defs>
 
-            <Area
-              type="monotone"
-              dataKey="total"
-              stroke="#6c63ff"
-              strokeWidth={2}
-              fill="url(#totalEmailGradient)"
-              dot={false}
-              activeDot={{
-                r: 5,
-                fill: "#6c63ff",
-                stroke: "white",
-                strokeWidth: 2,
-              }}
-            />
-          </AreaChart>
+              <CartesianGrid
+                strokeDasharray="3 3"
+                vertical={false}
+                stroke="#f0f0f0"
+              />
+
+              <XAxis
+                dataKey="month"
+                axisLine={false}
+                tickLine={false}
+                tick={{ fontSize: 12, fill: "#9ca3af" }}
+              />
+              <YAxis
+                axisLine={false}
+                tickLine={false}
+                tick={{ fontSize: 12, fill: "#9ca3af" }}
+                domain={[0, 7000]}
+                ticks={[0, 1000, 3000, 5000, 7000]}
+              />
+
+              <Tooltip content={<CustomTooltip />} />
+
+              <Area
+                type="monotone"
+                dataKey="total"
+                stroke="#6c63ff"
+                strokeWidth={2}
+                fill="url(#totalEmailGradient)"
+                dot={false}
+                activeDot={{
+                  r: 5,
+                  fill: "#6c63ff",
+                  stroke: "white",
+                  strokeWidth: 2,
+                }}
+              />
+            </AreaChart>
+          )}
         </ResponsiveContainer>
       </Box>
     </Box>

@@ -34,6 +34,17 @@ export const Wrapper = styled.div`
     .item-1 {
       grid-template-columns: 1fr 1fr;
     }
+
+    .item-2 {
+      flex-direction: column;
+      
+    }
+
+    .item-2 .sub-item-1 {
+      width: 100%;
+    }
+
+    
   }
   @media screen and (max-width: 480px) {
     .item-1 {

@@ -80,7 +80,7 @@ const ChakraAccordion = () => {
                     <ActiveUsersMap />
                   </div>
                   <div className="progress">
-                    <Flex direction="column" gap={1.5} maxW="27.5rem" h="100%">
+                    <Flex direction="column" gap={1.5} w="100%"  h="100%">
                       {countryData.map((country) => (
                         <Flex
                           key={country.code}
