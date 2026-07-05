@@ -1,4 +1,3 @@
-// TotalEmail.tsx
 import { useState } from "react";
 import {
   AreaChart,
@@ -25,25 +24,26 @@ import { PiChartBar } from "react-icons/pi";
 import { HiOutlineChevronDown } from "react-icons/hi2";
 import { AiOutlineLineChart } from "react-icons/ai";
 
-const monthlyEmailData = [
-  { month: "JAN", sent: 120, received: 200, unsent: 10, total: 330 },
-  { month: "FEB", sent: 140, received: 220, unsent: 12, total: 372 },
-  { month: "MARCH", sent: 130, received: 210, unsent: 8, total: 348 },
-  { month: "APR", sent: 160, received: 240, unsent: 15, total: 415 },
-  { month: "MAY", sent: 300, received: 480, unsent: 20, total: 800 },
-  { month: "JUN", sent: 340, received: 520, unsent: 18, total: 878 },
-  { month: "JUL", sent: 583, received: 932, unsent: 32, total: 1747 },
-  { month: "AUG", sent: 1600, received: 2900, unsent: 60, total: 4560 },
-  { month: "SEP", sent: 1750, received: 3100, unsent: 55, total: 4905 },
-  { month: "OCT", sent: 1900, received: 3300, unsent: 70, total: 5270 },
-  { month: "NOV", sent: 1850, received: 3200, unsent: 65, total: 5115 },
-  { month: "DEC", sent: 2000, received: 3400, unsent: 80, total: 5480 },
-];
+//Data
+import { monthlyEmailData } from "@/data/data";
 
-const CustomTooltip = ({ active, payload }: any) => {
+interface TooltipDataPoint {
+  sent: number;
+  received: number;
+  unsent: number;
+  total: number;
+}
+
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: {
+    payload: TooltipDataPoint;
+  }[];
+}
+
+const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (!active || !payload || !payload.length) return null;
   const data = payload[0].payload;
-
   return (
     <Box bg="white" boxShadow="lg" borderRadius="md" p="3" minW="150px">
       <Flex justify="space-between" mb="1">
@@ -89,54 +89,55 @@ const TotalEmail = () => {
   const [range, setRange] = useState("Month");
 
   return (
-    <Box bg="white" borderRadius="lg" p="5" w="100%">
-      <Flex justify="space-between" align="center" mb="6">
+    <Box bg="white" borderRadius="lg" p={{ base: "2", md: "5" }} w="100%">
+      <Flex
+        direction={{ base: "column", sm: "row" }}
+        justify="space-between"
+        align={{ base: "flex-start", sm: "center" }}
+        gap={{ base: "3", sm: "0" }}
+        mb={{ base: "4", md: "6" }}
+      >
         <Flex align="center" gap="2">
           <Box bg="gray.100" p="2" borderRadius="md">
             <LuMail size={16} />
           </Box>
-          <Text fontWeight="bold" fontSize="lg">
+          <Text fontWeight="bold" fontSize={{ base: "md", md: "lg" }}>
             Total Email
           </Text>
         </Flex>
 
-        <Flex align="center" gap="2">
-          <IconButton
-            aria-label="Bar chart view"
-            size="sm"
-            variant={chartType === "bar" ? "solid" : "outline"}
-            colorPalette={chartType === "bar" ? "#f00c08" : "gray"}
-            onClick={() => setChartType("bar")}
-            border="1px solid"
-            borderColor={"var(--text-secondary)"}
-            // color="var(--text-primary)"
-            bg={chartType === "bar" ? "#6c63ff" : "transparent"}
-            color={chartType === "bar" ? "white" : "gray.500"}
-            _hover={{
-              bg: "#6c63ff",
-              color: "#fff",
-            }}
-          >
-            <PiChartBar />
-          </IconButton>
-          <IconButton
-            aria-label="Line chart view"
-            size="sm"
-            variant={chartType === "line" ? "solid" : "outline"}
-            colorPalette={chartType === "line" ? "#789fcd" : "gray"}
-            onClick={() => setChartType("line")}
-            border="1px solid"
-            borderColor={"var(--text-secondary)"}
-            // color="#6c63ff"
-            bg={chartType === "bar" ? "transparent" : "#6c63ff"}
-            color={chartType === "bar" ? "gray.500" : "white"}
-            _hover={{
-              bg: "#6c63ff",
-              color: "#fff",
-            }}
-          >
-            <AiOutlineLineChart />
-          </IconButton>
+        <Flex
+          align="center"
+          gap="2"
+          w={{ base: "100%", sm: "auto" }}
+          justify={{ base: "space-between", sm: "flex-end" }}
+        >
+          <Flex gap="2">
+            <IconButton
+              aria-label="Bar chart view"
+              size="sm"
+              border="1px solid"
+              borderColor="var(--text-secondary)"
+              bg={chartType === "bar" ? "#6c63ff" : "transparent"}
+              color={chartType === "bar" ? "white" : "gray.500"}
+              _hover={{ bg: "#6c63ff", color: "#fff" }}
+              onClick={() => setChartType("bar")}
+            >
+              <PiChartBar />
+            </IconButton>
+            <IconButton
+              aria-label="Line chart view"
+              size="sm"
+              border="1px solid"
+              borderColor="var(--text-secondary)"
+              bg={chartType === "line" ? "#6c63ff" : "transparent"}
+              color={chartType === "line" ? "white" : "gray.500"}
+              _hover={{ bg: "#6c63ff", color: "#fff" }}
+              onClick={() => setChartType("line")}
+            >
+              <AiOutlineLineChart />
+            </IconButton>
+          </Flex>
 
           <Menu.Root>
             <Menu.Trigger asChild>
@@ -197,7 +198,7 @@ const TotalEmail = () => {
         </Flex>
       </Flex>
 
-      <Box h="380px" w="100%">
+      <Box h={{ base: "260px", sm: "320px", md: "380px" }} w="100%">
         <ResponsiveContainer width="100%" height="100%">
           {chartType === "bar" ? (
             <BarChart

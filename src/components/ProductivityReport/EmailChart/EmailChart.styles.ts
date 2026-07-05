@@ -11,10 +11,14 @@ export const Wrapper = styled.div`
   .chart-icon {
     background-color: var(--bg-page);
     border-radius: 8px;
-    padding: 0.3rem .5rem;
+    padding: 0.3rem 0.5rem;
   }
 
   .chart-title {
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 2em;
   }
 `;

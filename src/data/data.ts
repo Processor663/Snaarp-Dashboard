@@ -467,3 +467,34 @@ export const productivityReport: DashboardStatsResponse = {
     ],
   },
 };
+
+//=========Email Chart==============================//
+export interface TooltipDataPoint {
+  sent: number;
+  received: number;
+  unsent: number;
+  total: number;
+}
+
+export interface CustomTooltipProps {
+  active?: boolean;
+  payload?: {
+    payload: TooltipDataPoint;
+  }[];
+}
+
+export const monthlyEmailData = [
+  { month: "JAN", sent: 1200, received: 200, unsent: 10, total: 330 },
+  { month: "FEB", sent: 140, received: 220, unsent: 12, total: 372 },
+  { month: "MARCH", sent: 15000, received: 210, unsent: 8, total: 348 },
+  { month: "APR", sent: 160, received: 240, unsent: 15, total: 415 },
+  { month: "MAY", sent: 300, received: 480, unsent: 20, total: 800 },
+  { month: "JUN", sent: 340, received: 520, unsent: 48, total: 878 },
+  { month: "JUL", sent: 583, received: 932, unsent: 32, total: 1747 },
+  { month: "AUG", sent: 1600, received: 2900, unsent: 60, total: 4560 },
+  { month: "SEP", sent: 1750, received: 3100, unsent: 55, total: 4905 },
+  { month: "OCT", sent: 1900, received: 3300, unsent: 70, total: 5270 },
+  { month: "NOV", sent: 1850, received: 3200, unsent: 65, total: 5115 },
+  { month: "DEC", sent: 2000, received: 3400, unsent: 80, total: 5480 },
+];
+
