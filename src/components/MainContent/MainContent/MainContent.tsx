@@ -5,6 +5,7 @@ import CloudNetwork from "@/components/CloudNetwork/CloudNetwork/CloudNetwork";
 import DeviceManagement from "@/components/DeviceManagement/DeviceManagement/DeviceManagement";
 import ProductivityReport from "@/components/ProductivityReport/ProductivityReport/ProductivityReport";
 import OnlineUsersTable from "@/components/OnlineUsers/OnlineUsers";
+import AppWebActivity from "@/components/AppWebActivity/AppWebActivity/AppWebActivity";
 
 const MainContent = () => {
   return (
@@ -14,6 +15,7 @@ const MainContent = () => {
       <DeviceManagement />
       <ProductivityReport />
       <OnlineUsersTable />
+     <AppWebActivity />
     </Wrapper>
   );
 };
