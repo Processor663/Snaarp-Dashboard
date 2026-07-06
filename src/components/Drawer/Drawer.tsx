@@ -26,7 +26,7 @@ const MobileDrawer = () => {
           <Drawer.Backdrop />
 
           <Drawer.Positioner>
-            <Drawer.Content bg="#fff" p="9" style={{display:"flex",alignContent: "center", }}>
+            <Drawer.Content bg="#fff" p="9">
               <Drawer.Body>
                 {asideItemData.map((item, index) => (
                   <AsideItem key={index} {...item} />
@@ -34,7 +34,7 @@ const MobileDrawer = () => {
               </Drawer.Body>
 
               <Drawer.CloseTrigger asChild>
-                <CloseButton size="sm" />
+                <CloseButton size="sm" color="#000"/>
               </Drawer.CloseTrigger>
             </Drawer.Content>
           </Drawer.Positioner>

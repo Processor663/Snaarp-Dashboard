@@ -40,18 +40,19 @@ import { MdOutlineContactSupport } from "react-icons/md";
 export type AsideItemProps = {
   label: string;
   icon: IconType;
+  path: string
 };
 
 export const asideItemData: AsideItemProps[] = [
-  { label: "Dashboard", icon: MdDashboard },
-  { label: "Organization & Reg.", icon: HiOfficeBuilding },
-  { label: "Reporting", icon: TbReport },
-  { label: "Billing", icon: RiBillLine },
-  { label: "Account", icon: AiOutlineUser },
-  { label: "Storage", icon: MdStorage },
-  { label: "Settings", icon: IoSettingsOutline },
-  { label: "Device Management", icon: MdDevices },
-  { label: "Productivity Report", icon: TbReportAnalytics },
+  { label: "Dashboard", icon: MdDashboard, path:"/" },
+  { label: "Organization & Reg.", icon: HiOfficeBuilding, path:"/organization" },
+  { label: "Reporting", icon: TbReport, path:"/reporting" },
+  { label: "Billing", icon: RiBillLine, path: "billing" },
+  { label: "Account", icon: AiOutlineUser, path: "account" },
+  { label: "Storage", icon: MdStorage, path:"/storage" },
+  { label: "Settings", icon: IoSettingsOutline , path: "/settings"},
+  { label: "Device Management", icon: MdDevices, path:"/device" },
+  { label: "Productivity Report", icon: TbReportAnalytics, path:"/productivity" },
 ];
 
 export const asideBottomItems: AsideItemProps[] = [

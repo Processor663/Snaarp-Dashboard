@@ -1,16 +1,20 @@
-import  './App.css'
-import Aside from "./components/DashboardAside/Aside/Aside";
-import MainContent from './components/MainContent/MainContent/MainContent';
+import { Routes, Route } from "react-router-dom";
+//Css
+import "./App.css";
 
+//Pages
+import MainPage from "./components/pages/MainPage";
+import DashboardLayout from "./components/layout/DashboardLayout";
 
 
 function App() {
   return (
-    <div className="wrapper">
-      <Aside />
-      <MainContent />
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<DashboardLayout/>}>
+        <Route index element={<MainPage />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
