@@ -5,6 +5,8 @@ import { HiGlobeAlt, HiOutlineChevronDown } from "react-icons/hi2";
 import { FcGoogle } from "react-icons/fc";
 import { FaFirefox, FaFacebook, FaXTwitter } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
+
+
 import type { IconType } from "react-icons";
 
 interface WebActivityItem {
@@ -237,8 +239,8 @@ const WebActivity = () => {
               align="center"
               gap="3"
               py="2"
-              borderBottom={isLast ? "none" : "1px solid"}
-              borderColor="gray.100"
+              borderBottom={isLast ? "none" : "1.9px solid"}
+              borderColor="gray.300"
             >
               <Flex
                 align="center"

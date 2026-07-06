@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 17%;
-  height: fit-content;  
+  height: fit-content;
   padding: 1.5rem 1rem 0;
   background-color: var(--bg-sidebar);
 
@@ -48,5 +48,6 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: 1024px) {
     display: none;
+  
   }
 `;

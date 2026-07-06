@@ -7,12 +7,13 @@ import {
   HiChevronUp,
   HiChevronDown,
 } from "react-icons/hi2";
-import { HiOutlineSwitchVertical } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
 import { FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { PiMicrosoftTeamsLogoFill } from "react-icons/pi";
 import { SiOpera } from "react-icons/si";
 import { RiInstagramFill } from "react-icons/ri";
+import { TiArrowUnsorted } from "react-icons/ti";
+
 
 interface AppActivity {
   id: string;
@@ -152,7 +153,7 @@ const SortableHeader = ({
       ) : isActive && sortDirection === "desc" ? (
         <HiChevronDown size={12} color="#6c63ff" />
       ) : (
-        <HiOutlineSwitchVertical size={12} color="#9ca3af" />
+        <TiArrowUnsorted size={12} color="#9ca3af" />
       )}
       <Text
         fontWeight="semibold"
@@ -350,7 +351,7 @@ const AppActivityReport = () => {
             <Table.Row bg="gray.100">
               <Table.ColumnHeader py="2" px="3" border="none">
                 <Flex align="center" gap="1">
-                  <HiOutlineSwitchVertical size={12} color="#9ca3af" />
+                  <TiArrowUnsorted size={12} color="#9ca3af" />
                   <Text fontWeight="semibold" fontSize="xs" color="gray.700">
                     Application
                   </Text>
@@ -395,7 +396,7 @@ const AppActivityReport = () => {
                   key={item.id}
                   bg={index % 2 === 0 ? "white" : "gray.50"}
                 >
-                  <Table.Cell py="2" px="3" border="none">
+                  <Table.Cell py="2" px="3" border="none" >
                     <Flex align="center" gap="2">
                       <Flex
                         align="center"
@@ -405,6 +406,7 @@ const AppActivityReport = () => {
                         borderRadius="6px"
                         bg={app.bg}
                         flexShrink="0"
+                        
                       >
                         <AppIcon
                           size={12}

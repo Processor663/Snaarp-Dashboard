@@ -8,4 +8,8 @@ export const Wrapper = styled.div`
   gap: 0.5rem;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
+
+  @media screen and (max-width: 1024px) {
+    color: var(--text-primary);
+  }
 `;

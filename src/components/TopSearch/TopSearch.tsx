@@ -2,10 +2,12 @@ import { Wrapper } from "./TopSearch.styles";
 import { CiSearch } from "react-icons/ci";
 import { TfiBell } from "react-icons/tfi";
 import { BsCopy } from "react-icons/bs";
+import MobileDrawer from "../Drawer/Drawer";
 
 const TopSearch = () => {
   return (
     <Wrapper>
+      <MobileDrawer />
       <div className="search-container">
         <CiSearch className="icon-search" />
         <input type="text" placeholder="search for users, groups or settings" />

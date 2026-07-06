@@ -7,7 +7,7 @@ import {
   HiChevronUp,
   HiChevronDown,
 } from "react-icons/hi2";
-import { HiOutlineSwitchVertical } from "react-icons/hi";
+
 import { FaWindows, FaApple, FaLinux } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { RiInstagramFill } from "react-icons/ri";
@@ -300,7 +300,7 @@ const OnlineUsersTable = () => {
   }, [selectedOrg, sortKey, sortDirection]);
 
   return (
-    <Box bg="white" borderRadius="lg" p="5" w="100%">
+    <Box bg="white" borderRadius="lg" p="5" w="100%" mt="2">
       <Flex
         justify="space-between"
         align={{ base: "flex-start", sm: "center" }}
