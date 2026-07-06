@@ -40,22 +40,31 @@ import { MdOutlineContactSupport } from "react-icons/md";
 export type AsideItemProps = {
   label: string;
   icon: IconType;
-  path: string
+  path?: string;
 };
 
 export const asideItemData: AsideItemProps[] = [
-  { label: "Dashboard", icon: MdDashboard, path:"/" },
-  { label: "Organization & Reg.", icon: HiOfficeBuilding, path:"/organization" },
-  { label: "Reporting", icon: TbReport, path:"/reporting" },
+  { label: "Dashboard", icon: MdDashboard, path: "/" },
+  {
+    label: "Organization & Reg.",
+    icon: HiOfficeBuilding,
+    path: "organization",
+  },
+  { label: "Reporting", icon: TbReport, path: "reporting" },
   { label: "Billing", icon: RiBillLine, path: "billing" },
   { label: "Account", icon: AiOutlineUser, path: "account" },
-  { label: "Storage", icon: MdStorage, path:"/storage" },
-  { label: "Settings", icon: IoSettingsOutline , path: "/settings"},
-  { label: "Device Management", icon: MdDevices, path:"/device" },
-  { label: "Productivity Report", icon: TbReportAnalytics, path:"/productivity" },
+  { label: "Storage", icon: MdStorage, path: "storage" },
+  { label: "Settings", icon: IoSettingsOutline, path: "settings" },
+  { label: "Device Management", icon: MdDevices, path: "device" },
+  {
+    label: "Productivity Report",
+    icon: TbReportAnalytics,
+    path: "productivity",
+  },
 ];
 
-export const asideBottomItems: AsideItemProps[] = [
+type AsideBottomItem = Omit<AsideItemProps, "path">;
+export const asideBottomItems: AsideBottomItem[] = [
   { label: "User Panel", icon: HiOutlineChartBar },
   { label: "Support", icon: MdOutlineContactSupport },
 ];
@@ -498,4 +507,3 @@ export const monthlyEmailData = [
   { month: "NOV", sent: 1850, received: 3200, unsent: 65, total: 5115 },
   { month: "DEC", sent: 2000, received: 3400, unsent: 80, total: 5480 },
 ];
-

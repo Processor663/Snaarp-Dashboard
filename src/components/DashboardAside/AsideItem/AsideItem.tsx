@@ -1,31 +1,43 @@
 import { NavLink } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
 //styles
 import { Wrapper } from "./AsideItem.styles";
 
 //types
 import type { AsideItemProps } from "@/data/data";
 
-const AsideItem = ({ label, icon ,path}: AsideItemProps) => {
-  const Icon = icon;
-  return (
-    <Wrapper>
-      {<Icon size={20} />}
-      <NavLink to={path}>
-        {({ isActive }) => (
-          <Box
-            px={4}
-            py={2}
-            rounded="md"
-            bg={isActive ? "green.50" : "transparent"}
-            color={isActive ? "green.600" : "gray.600"}
-            fontWeight={isActive ? "bold" : "normal"}
-            _hover={{ bg: "gray.100" }}
+const AsideItem = ({ label, icon: Icon, path }: AsideItemProps) => {
+  return path ? (
+    <NavLink to={path}>
+      {({ isActive }) => (
+        <Wrapper
+          style={{
+            background: isActive ? "var( --accent-light)" : "transparent",
+            fontWeight: "bold",
+            padding: ".5rem 0 .5rem .5rem",
+            borderRadius: "5px",
+          }}
+        >
+          <Icon
+            size={20}
+            style={{
+              color: isActive ? "var( --chart-blue)" : "",
+            }}
+          />
+          <span
+            className="aside-item-content"
+            style={{
+              color: isActive ? "var( --chart-blue)" : "",
+            }}
           >
-            <span className="aside-item-content">{label}</span>
-          </Box>
-        )}
-      </NavLink>
+            {label}
+          </span>
+        </Wrapper>
+      )}
+    </NavLink>
+  ) : (
+    <Wrapper>
+      <Icon size={20} />
+      <span className="aside-item-content">{label}</span>
     </Wrapper>
   );
 };
