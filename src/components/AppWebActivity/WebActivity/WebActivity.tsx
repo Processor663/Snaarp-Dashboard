@@ -227,92 +227,94 @@ const WebActivity = () => {
         View your comprehensive organizational web report
       </Text>
 
-      <Flex direction="column" gap="0">
-        {filteredData.map((item, index) => {
-          const config = iconMap[item.icon];
-          const Icon = config.icon;
-          const isLast = index === filteredData.length - 1;
+      <Box overflowX="auto" pb="1">
+        <Flex direction="column" gap="0" w="400px">
+          {filteredData.map((item, index) => {
+            const config = iconMap[item.icon];
+            const Icon = config.icon;
+            const isLast = index === filteredData.length - 1;
 
-          return (
-            <Flex
-              key={item.id}
-              align="center"
-              gap="3"
-              py="2"
-              borderBottom={isLast ? "none" : "1.9px solid"}
-              borderColor="gray.300"
-            >
+            return (
               <Flex
+                key={item.id}
                 align="center"
-                justify="center"
-                w="26px"
-                h="26px"
-                flexShrink="0"
+                gap="3"
+                py="2"
+                borderBottom={isLast ? "none" : "1.9px solid"}
+                borderColor="gray.300"
               >
-                {item.icon === "gmail" ? (
-                  <GmailIcon />
-                ) : Icon ? (
-                  <Icon size={20} color={config.color} />
-                ) : null}
-              </Flex>
+                <Flex
+                  align="center"
+                  justify="center"
+                  w="26px"
+                  h="26px"
+                  flexShrink="0"
+                >
+                  {item.icon === "gmail" ? (
+                    <GmailIcon />
+                  ) : Icon ? (
+                    <Icon size={20} color={config.color} />
+                  ) : null}
+                </Flex>
 
-              <Text
-                fontSize="sm"
-                fontWeight="medium"
-                color="gray.700"
-                minW="60px"
-                flexShrink="0"
-              >
-                {item.name}
-              </Text>
+                <Text
+                  fontSize="sm"
+                  fontWeight="medium"
+                  color="gray.700"
+                  minW="60px"
+                  flexShrink="0"
+                >
+                  {item.name}
+                </Text>
 
-              <Box
-                flex="1"
-                h="6px"
-                bg="gray.100"
-                borderRadius="full"
-                overflow="hidden"
-                mx="1"
-              >
                 <Box
-                  h="100%"
-                  w={`${item.percentage}%`}
-                  bg="#22c55e"
+                  flex="1"
+                  h="6px"
+                  bg="gray.200"
                   borderRadius="full"
-                />
-              </Box>
+                  overflow="hidden"
+                  mx="1"
+                >
+                  <Box
+                    h="100%"
+                    w={`${item.percentage}%`}
+                    bg="#22c55e"
+                    borderRadius="full"
+                  />
+                </Box>
 
-              <Text
-                fontSize="sm"
-                color="gray.500"
-                minW="32px"
-                textAlign="right"
-                flexShrink="0"
-              >
-                {item.percentage}%
-              </Text>
+                <Text
+                  fontSize="sm"
+                  color="gray.500"
+                  minW="32px"
+                  textAlign="right"
+                  flexShrink="0"
+                >
+                  {item.percentage}%
+                </Text>
 
-              <Text
-                fontSize="sm"
-                color="gray.500"
-                minW="110px"
-                textAlign="right"
-                flexShrink="0"
-              >
-                {item.timeUsage}
+                <Text
+                  fontSize="sm"
+                  color="gray.500"
+                  minW="110px"
+                  textAlign="right"
+                  flexShrink="0"
+                >
+                  {item.timeUsage}
+                </Text>
+              </Flex>
+            );
+          })}
+
+          {filteredData.length === 0 && (
+            <Flex justify="center" py="6">
+              <Text fontSize="sm" color="gray.400">
+                No activity data for this period.
               </Text>
             </Flex>
-          );
-        })}
-
-        {filteredData.length === 0 && (
-          <Flex justify="center" py="6">
-            <Text fontSize="sm" color="gray.400">
-              No activity data for this period.
-            </Text>
-          </Flex>
-        )}
-      </Flex>
+          )}
+        </Flex>
+      </Box>
     </Box>
   );
 };

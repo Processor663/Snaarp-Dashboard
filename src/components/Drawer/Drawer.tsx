@@ -27,14 +27,14 @@ const MobileDrawer = () => {
 
           <Drawer.Positioner>
             <Drawer.Content bg="#fff" p="9">
-              <Drawer.Body>
+              <Drawer.Body pt="9">
                 {asideItemData.map((item, index) => (
                   <AsideItem key={index} {...item} />
                 ))}
               </Drawer.Body>
 
               <Drawer.CloseTrigger asChild>
-                <CloseButton size="sm" color="#000"/>
+                <CloseButton size="sm" color="#000" />
               </Drawer.CloseTrigger>
             </Drawer.Content>
           </Drawer.Positioner>
