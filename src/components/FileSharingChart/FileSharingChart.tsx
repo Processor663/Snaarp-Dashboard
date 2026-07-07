@@ -1,9 +1,11 @@
 // FileSharing.tsx
 import { useState, useRef } from "react";
-import { Box, Flex, Text, IconButton } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import {
   BarChart,
   Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -44,26 +46,33 @@ const legendItems = [
 
 const monthOptions = ["Month", "Week", "Year"];
 
-// Custom shape drawing 3 layered rounded bars per category, mimicking the
-// depth/overlap effect in the screenshot (back = tallest/darkest,
-// front = shortest/lightest, each offset slightly down-right).
-const LayeredBarShape = (props: any) => {
-  const { x, y, width, height, payload } = props;
+interface LayeredBarShapeProps {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  payload?: FileSharingDataPoint;
+}
+
+const MAX_VALUE = 100;
+
+const LayeredBarShape = (props: LayeredBarShapeProps) => {
+  const { x = 0, y = 0, width = 0, height = 0, payload } = props;
+  if (!payload) return null;
+
+  const fullBarPixelHeight = height / (payload.public / MAX_VALUE || 1);
+
   const barWidth = width * 0.55;
   const gap = width * 0.12;
 
-  const maxVal = 100;
-  const chartHeight = 300; // matches the <BarChart> height set below
-
-  const publicHeight = (payload.public / maxVal) * chartHeight;
-  const linkHeight = (payload.anyoneWithLink / maxVal) * chartHeight;
-  const orgHeight = (payload.withinOrg / maxVal) * chartHeight;
+  const publicHeight = (payload.public / MAX_VALUE) * fullBarPixelHeight;
+  const linkHeight = (payload.anyoneWithLink / MAX_VALUE) * fullBarPixelHeight;
+  const orgHeight = (payload.withinOrg / MAX_VALUE) * fullBarPixelHeight;
 
   const baseY = y + height;
 
   return (
     <g>
-      {/* Back bar: Public (tallest, darkest) */}
       <rect
         x={x}
         y={baseY - publicHeight}
@@ -73,7 +82,6 @@ const LayeredBarShape = (props: any) => {
         ry={5}
         fill="#3730d9"
       />
-      {/* Middle bar: Anyone with link */}
       <rect
         x={x + gap}
         y={baseY - linkHeight}
@@ -84,7 +92,6 @@ const LayeredBarShape = (props: any) => {
         fill="#4f5fe0"
         opacity={0.9}
       />
-      {/* Front bar: Within Organisation (shortest, lightest) */}
       <rect
         x={x + gap * 2}
         y={baseY - orgHeight}
@@ -113,21 +120,45 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
       bg="gray.500"
       color="white"
       borderRadius="md"
-      px="4"
-      py="3"
+      px="3"
+      py="2"
       minW="150px"
       boxShadow="0 8px 20px rgba(0,0,0,0.2)"
     >
-      <Text fontWeight="bold" fontSize="sm" mb="2" letterSpacing="wide">
+      <Text fontWeight="bold" fontSize="xs" mb="1.5" letterSpacing="wide">
         {data.month}
       </Text>
-      <Flex align="center" gap="2">
-        <Box w="10px" h="10px" borderRadius="3px" bg="#3730d9" />
-        <Text fontSize="sm">Public: {data.public}</Text>
+      <Flex direction="column" gap="1">
+        <Flex align="center" gap="2">
+          <Box w="8px" h="8px" borderRadius="2px" bg="#3730d9" flexShrink="0" />
+          <Text fontSize="xs">Public: {data.public}</Text>
+        </Flex>
+        <Flex align="center" gap="2">
+          <Box w="8px" h="8px" borderRadius="2px" bg="#4f5fe0" flexShrink="0" />
+          <Text fontSize="xs">Anyone with link: {data.anyoneWithLink}</Text>
+        </Flex>
+        <Flex align="center" gap="2">
+          <Box w="8px" h="8px" borderRadius="2px" bg="#7c88ea" flexShrink="0" />
+          <Text fontSize="xs">Within Organisation: {data.withinOrg}</Text>
+        </Flex>
       </Flex>
     </Box>
   );
 };
+
+const toggleBtnStyle = (isActive: boolean): React.CSSProperties => ({
+  width: "30px",
+  height: "30px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  border: `1px solid ${isActive ? "#6c63ff" : "#e2e8f0"}`,
+  background: isActive ? "#eef0ff" : "transparent",
+  color: isActive ? "#6c63ff" : "#718096",
+  borderRadius: "6px",
+  cursor: "pointer",
+  flexShrink: 0,
+});
 
 const FileSharing = () => {
   const [chartType, setChartType] = useState<"bar" | "line">("bar");
@@ -136,89 +167,98 @@ const FileSharing = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
-    if (dropdownRef.current && dropdownRef.current.contains(e.relatedTarget as Node)) {
+    if (
+      dropdownRef.current &&
+      dropdownRef.current.contains(e.relatedTarget as Node)
+    ) {
       return;
     }
     setIsDropdownOpen(false);
   };
 
   return (
-    <Box bg="white" borderRadius="lg" p="5" w="100%">
+    <Box
+      bg="white"
+      borderRadius="lg"
+      p={{ base: "3", md: "4" }}
+      w="100%"
+      maxW="100%"
+      overflow="hidden"
+    >
       <Flex
         justify="space-between"
-        align={{ base: "flex-start", md: "center" }}
-        direction={{ base: "column", md: "row" }}
-        gap="3"
-        mb="1"
+        align={{ base: "flex-start", sm: "center" }}
+        direction={{ base: "column", sm: "row" }}
+        gap="2"
+        w="100%"
       >
         <Flex align="center" gap="2">
-          <Box bg="gray.100" p="2" borderRadius="md">
-            <HiOutlineDocumentText size={18} />
+          <Box bg="gray.100" p="1.5" borderRadius="md" flexShrink="0">
+            <HiOutlineDocumentText size={16} />
           </Box>
-          <Text fontWeight="bold" fontSize="lg">
+          <Text fontWeight="bold" fontSize="md">
             File Sharing
           </Text>
         </Flex>
 
-        <Flex align="center" gap="2">
-          <IconButton
-            aria-label="Bar chart view"
-            size="sm"
-            border="1px solid"
-            borderColor={chartType === "bar" ? "#6c63ff" : "gray.200"}
-            bg={chartType === "bar" ? "#eef0ff" : "transparent"}
-            color={chartType === "bar" ? "#6c63ff" : "gray.500"}
-            _hover={{ bg: "#eef0ff", color: "#6c63ff" }}
-            onClick={() => setChartType("bar")}
-          >
-            <BsBarChartFill />
-          </IconButton>
-          <IconButton
-            aria-label="Line chart view"
-            size="sm"
-            border="1px solid"
-            borderColor={chartType === "line" ? "#6c63ff" : "gray.200"}
-            bg={chartType === "line" ? "#eef0ff" : "transparent"}
-            color={chartType === "line" ? "#6c63ff" : "gray.500"}
-            _hover={{ bg: "#eef0ff", color: "#6c63ff" }}
-            onClick={() => setChartType("line")}
-          >
-            <AiOutlineLineChart />
-          </IconButton>
+        <Flex
+          align="center"
+          gap="2"
+          w={{ base: "100%", sm: "auto" }}
+          justify={{ base: "space-between", sm: "flex-end" }}
+        >
+          <Flex gap="2">
+            <button
+              style={toggleBtnStyle(chartType === "bar")}
+              onClick={() => setChartType("bar")}
+            >
+              <BsBarChartFill size={13} />
+            </button>
+            <button
+              style={toggleBtnStyle(chartType === "line")}
+              onClick={() => setChartType("line")}
+            >
+              <AiOutlineLineChart size={13} />
+            </button>
+          </Flex>
 
-          <Box position="relative" ref={dropdownRef} onBlur={handleBlur} tabIndex={-1}>
-            <Flex
-              as="button"
+          <Box
+            position="relative"
+            ref={dropdownRef}
+            onBlur={handleBlur}
+            tabIndex={-1}
+          >
+            <button
               onClick={() => setIsDropdownOpen((prev) => !prev)}
-              align="center"
-              gap="2"
-              border="1px solid"
-              borderColor="gray.200"
-              borderRadius="md"
-              color="gray.600"
-              bg="white"
-              px="3"
-              py="1.5"
-              fontSize="sm"
-              cursor="pointer"
-              _hover={{ bg: "gray.50" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+                border: "1px solid #e2e8f0",
+                borderRadius: "6px",
+                color: "#718096",
+                background: "white",
+                padding: "6px 10px",
+                fontSize: "12px",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
             >
               {range} <HiOutlineChevronDown />
-            </Flex>
+            </button>
 
             {isDropdownOpen && (
               <Box
                 position="absolute"
-                top="calc(100% + 6px)"
+                top="calc(100% + 4px)"
                 right="0"
                 bg="white"
                 borderRadius="md"
                 boxShadow="0 8px 24px rgba(0,0,0,0.12)"
                 border="1px solid"
                 borderColor="gray.100"
-                minW="120px"
-                py="1"
-                zIndex="10"
+                minW="100px"
+                zIndex="20"
               >
                 {monthOptions.map((opt) => {
                   const isActive = range === opt;
@@ -230,9 +270,9 @@ const FileSharing = () => {
                         setRange(opt);
                         setIsDropdownOpen(false);
                       }}
-                      px="3"
-                      py="2"
-                      fontSize="sm"
+                      px="2"
+                      py="1.5"
+                      fontSize="xs"
                       cursor="pointer"
                       bg={isActive ? "#f0efff" : "transparent"}
                       color={isActive ? "#6c63ff" : "gray.700"}
@@ -249,38 +289,115 @@ const FileSharing = () => {
         </Flex>
       </Flex>
 
-      <Text fontSize="sm" color="gray.500" mb="4">
+      <Text fontSize="xs" color="gray.500" mt="1">
         Keep track of files and how they're shared
       </Text>
 
-      <Box h="360px" w="100%">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={fileSharingData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-            <XAxis
-              dataKey="month"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12, fill: "#9ca3af" }}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12, fill: "#9ca3af" }}
-              domain={[0, 100]}
-              ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
-            />
-            <Tooltip content={<CustomTooltip />} cursor={false} />
-            <Bar dataKey="public" shape={<LayeredBarShape />} />
-          </BarChart>
-        </ResponsiveContainer>
+      {/* This scroll wrapper is the only place allowed to overflow — the
+          outer card clips it via overflow="hidden" above, so extra chart
+          width can never push the rest of the page/layout sideways. */}
+      <Box
+        overflowX="auto"
+        mt="2"
+        mx={{ base: "-3", md: "-4" }}
+        px={{ base: "3", md: "4" }}
+      >
+        <Box
+          h={{ base: "200px", sm: "240px", md: "300px" }}
+          minW={{ base: "100%", md: "100%" }}
+          w="100%"
+        >
+          <ResponsiveContainer width="100%" height="100%">
+            {chartType === "bar" ? (
+              <BarChart
+                data={fileSharingData}
+                margin={{ top: 5, right: 0, left: -25, bottom: 0 }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                  stroke="#f0f0f0"
+                />
+                <XAxis
+                  dataKey="month"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 10, fill: "#9ca3af" }}
+                />
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 10, fill: "#9ca3af" }}
+                  domain={[0, 100]}
+                  ticks={[0, 20, 40, 60, 80, 100]}
+                  width={28}
+                />
+                <Tooltip content={<CustomTooltip />} cursor={false} />
+                <Bar dataKey="public" shape={<LayeredBarShape />} />
+              </BarChart>
+            ) : (
+              <LineChart
+                data={fileSharingData}
+                margin={{ top: 5, right: 5, left: -25, bottom: 0 }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                  stroke="#f0f0f0"
+                />
+                <XAxis
+                  dataKey="month"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 10, fill: "#9ca3af" }}
+                />
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 10, fill: "#9ca3af" }}
+                  domain={[0, 100]}
+                  ticks={[0, 20, 40, 60, 80, 100]}
+                  width={28}
+                />
+                <Tooltip content={<CustomTooltip />} />
+                <Line
+                  type="monotone"
+                  dataKey="public"
+                  stroke="#3730d9"
+                  strokeWidth={2}
+                  dot={{ r: 3 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="anyoneWithLink"
+                  stroke="#4f5fe0"
+                  strokeWidth={2}
+                  dot={{ r: 3 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="withinOrg"
+                  stroke="#7c88ea"
+                  strokeWidth={2}
+                  dot={{ r: 3 }}
+                />
+              </LineChart>
+            )}
+          </ResponsiveContainer>
+        </Box>
       </Box>
 
-      <Flex justify="center" gap="6" mt="4" wrap="wrap">
+      <Flex justify="center" gap="3" wrap="wrap" mt="2">
         {legendItems.map((item) => (
-          <Flex key={item.label} align="center" gap="2">
-            <Box w="14px" h="14px" borderRadius="1px" bg={item.color} />
-            <Text fontSize="sm" color="gray.700">
+          <Flex key={item.label} align="center" gap="1">
+            <Box
+              w="12px"
+              h="12px"
+              borderRadius="1px"
+              bg={item.color}
+              flexShrink="0"
+            />
+            <Text fontSize="xs" color="gray.700">
               {item.label}
             </Text>
           </Flex>
