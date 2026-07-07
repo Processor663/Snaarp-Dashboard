@@ -12,9 +12,8 @@ const AsideItem = ({ label, icon: Icon, path }: AsideItemProps) => {
         <Wrapper
           style={{
             background: isActive ? "var( --accent-light)" : "transparent",
-            fontWeight: "bold",
-            padding: ".5rem 0 .5rem .5rem",
-            borderRadius: "5px",
+            borderRadius: isActive?  "5px" : "",
+            padding: isActive? "0.5rem 0  0.5rem  0.5rem" : "",
           }}
         >
           <Icon
@@ -27,6 +26,7 @@ const AsideItem = ({ label, icon: Icon, path }: AsideItemProps) => {
             className="aside-item-content"
             style={{
               color: isActive ? "var( --chart-blue)" : "",
+              fontWeight: isActive ? "bold" : "",
             }}
           >
             {label}

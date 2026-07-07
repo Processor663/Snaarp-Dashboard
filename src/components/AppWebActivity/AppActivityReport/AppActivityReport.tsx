@@ -395,6 +395,7 @@ const AppActivityReport = () => {
                 <Table.Row
                   key={item.id}
                   bg={index % 2 === 0 ? "white" : "gray.50"}
+                  borderBottom="none"
                 >
                   <Table.Cell py="2" px="3" border="none" >
                     <Flex align="center" gap="2">

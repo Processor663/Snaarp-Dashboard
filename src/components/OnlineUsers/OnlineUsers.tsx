@@ -441,9 +441,10 @@ const OnlineUsersTable = () => {
               return (
                 <Table.Row
                   key={`${user.id}-${index}`}
-                  bg={index % 2 === 0 ? "white" : "gray.50"}
+                  bg={index % 2 === 0 ? "white" : "var(--bg-page)" }
+                  borderBottom="none"
                 >
-                  <Table.Cell py="3" px="4" border="none">
+                  <Table.Cell py="1" px="4" border="none">
                     <Box
                       w="8px"
                       h="8px"
@@ -452,12 +453,12 @@ const OnlineUsersTable = () => {
                     />
                   </Table.Cell>
 
-                  <Table.Cell py="3" px="2" border="none">
+                  <Table.Cell py="2" px="2" border="none">
                     <Flex align="center" gap="3">
                       <Box
                         w="34px"
                         h="34px"
-                        borderRadius="full"
+                        borderRadius="lg"
                         overflow="hidden"
                         flexShrink="0"
                         bgImage={`url(${user.avatar})`}
