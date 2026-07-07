@@ -38,8 +38,8 @@ const StorageCard = () => {
         {/* Donut chart */}
         <Box
           position="relative"
-          w={{ base: "110px", sm: "130px", md: "150px" }}
-          h={{ base: "110px", sm: "130px", md: "150px" }}
+          w={{ base: "200px", sm: "130px", md: "150px" }}
+          h={{ base: "200px", sm: "130px", md: "150px" }}
           flexShrink="0"
         >
           <ResponsiveDonut />
