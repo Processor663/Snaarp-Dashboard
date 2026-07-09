@@ -8,11 +8,15 @@ import App from './App.tsx'
 //flag icons
 import "flag-icons/css/flag-icons.min.css";
 
+
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider>
       <BrowserRouter>
-        <App />
+        <div style={{ margin: "auto", maxWidth: "1320px" }}>
+          <App />
+        </div>
       </BrowserRouter>
     </Provider>
   </StrictMode>,
