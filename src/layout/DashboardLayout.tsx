@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Wrapper } from "./DashboardLayout.styles";
 
 //Component
-import SideBar from "../DashboardAside/Aside/Aside";
+import SideBar from "../components/DashboardAside/Aside/Aside";
 
 const DashboardLayout = () => {
   return (
